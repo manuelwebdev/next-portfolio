@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export default function Home() {
   return (
-    <main className="flex flex-column p-4">
+    <main className="h-full flex flex-col p-4 gap-6">
       <div className="w-full grid grid-cols-8 gap-3 ">
         <div className="p-[1px] bg-black rounded-md col-span-6 border-2 border-solid border-black clip-path-documentShape">
           <Image
@@ -53,6 +53,17 @@ export default function Home() {
             LinkedIn
           </Link>
         </div>
+      </div>
+      <div className="flex flex-col gap-4">
+        <h1 className="text-4xl font-semibold">Hi, I&apos;m Manuel</h1>
+        <p className="text-lg">
+          I like to build, tinker, create, discover, and learn new things on the
+          internet.
+        </p>
+      </div>
+      <div className="flex flex-col">
+        <h2 className="text-2xl font-semibold">My Toolbox</h2>
+        <div></div>
       </div>
     </main>
   )
