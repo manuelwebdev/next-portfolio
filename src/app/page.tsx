@@ -5,6 +5,35 @@ import { FaLinkedin } from 'react-icons/fa6'
 import Link from 'next/link'
 
 export default function Home() {
+  const skills = [
+    'HTML',
+    'CSS',
+    'JavaScript (ES5/ES6+)',
+    'TypeScript',
+    'Git',
+    'GitHub',
+    'SQL',
+    'ReactJS',
+    'VueJS',
+    'Material UI',
+    'Tailwind',
+    'Bootstrap',
+    'SASS',
+    'NodeJS',
+    'NestJS',
+    'ExpressJS',
+    'MongoDB',
+    'Wordpress',
+    'Figma',
+    'Illustrator',
+    'Responsive Design',
+    'Wireframing',
+  ]
+  console.log(
+    skills.map((skill) => {
+      return { name: skill }
+    }),
+  )
   return (
     <main className="h-full flex flex-col p-4 gap-6">
       <div className="w-full grid grid-cols-8 gap-3 ">
@@ -63,7 +92,7 @@ export default function Home() {
       </div>
       <div className="flex flex-col">
         <h2 className="text-2xl font-semibold">My Toolbox</h2>
-        <div></div>
+        <div className="border-2 border-solid border-black"></div>
       </div>
     </main>
   )
