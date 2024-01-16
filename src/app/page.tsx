@@ -3,37 +3,15 @@ import Image from 'next/image'
 import { buttonVariants } from '@/components/ui/button'
 import { FaLinkedin } from 'react-icons/fa6'
 import Link from 'next/link'
+import { getAll } from '@vercel/edge-config'
 
 export default function Home() {
-  const skills = [
-    'HTML',
-    'CSS',
-    'JavaScript (ES5/ES6+)',
-    'TypeScript',
-    'Git',
-    'GitHub',
-    'SQL',
-    'ReactJS',
-    'VueJS',
-    'Material UI',
-    'Tailwind',
-    'Bootstrap',
-    'SASS',
-    'NodeJS',
-    'NestJS',
-    'ExpressJS',
-    'MongoDB',
-    'Wordpress',
-    'Figma',
-    'Illustrator',
-    'Responsive Design',
-    'Wireframing',
-  ]
-  console.log(
-    skills.map((skill) => {
-      return { name: skill }
-    }),
-  )
+  async function getGreeting() {
+    const res = await getAll()
+    // const data = await res.json()
+    console.log(res)
+  }
+  getGreeting()
   return (
     <main className="h-full flex flex-col p-4 gap-6">
       <div className="w-full grid grid-cols-8 gap-3 ">
