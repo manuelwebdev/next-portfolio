@@ -4,14 +4,19 @@ import { buttonVariants } from '@/components/ui/button'
 import { FaLinkedin } from 'react-icons/fa6'
 import Link from 'next/link'
 import { getAll } from '@vercel/edge-config'
+import { useEffect } from 'react'
 
 export default function Home() {
-  async function getGreeting() {
-    const res = await getAll()
-    // const data = await res.json()
-    console.log(res)
-  }
-  getGreeting()
+  const res: any = []
+  ;(async function () {
+    try {
+      const { skills = [], socials = [] } = (await getAll()) || []
+      // const data = await res.json()
+      await res.push({ skills, socials })
+    } catch (error) {
+      console.log(error)
+    }
+  })()
   return (
     <main className="h-full flex flex-col p-4 gap-6">
       <div className="w-full grid grid-cols-8 gap-3 ">
@@ -70,7 +75,7 @@ export default function Home() {
       </div>
       <div className="flex flex-col">
         <h2 className="text-2xl font-semibold">My Toolbox</h2>
-        <div className="border-2 border-solid border-black"></div>
+        <div className="border-2 border-solid border-black">{res && res}</div>
       </div>
     </main>
   )
