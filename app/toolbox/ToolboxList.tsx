@@ -9,6 +9,7 @@ async function getSkills() {
   const data = await get<Skill[]>('skills')
   return data
 }
+
 function SkillListByType({ skills, type }: { skills: Skill[]; type: string }) {
   return (
     <div className="grid grid-cols-2 gap-1">
