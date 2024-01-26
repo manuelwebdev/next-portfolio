@@ -11,12 +11,36 @@ export default function Home({ data }: any) {
   return (
     <main className="h-full flex flex-col p-4 gap-6">
       <div className="w-full grid grid-cols-8 gap-3 ">
-        <div className="p-[1px] bg-black rounded-md col-span-6 border-2 border-solid border-black clip-path-documentShape">
+        <div className="parent Grid-Grouping p-[1px] rounded-md col-span-6">
           <Image
+            className="clip-path-documentShape rounded-md"
             src={ocean}
-            alt="Me by the ocean"
-            className="clip-path-documentShape  rounded-sm"
+            alt="me by the ocean"
           />
+          <svg
+            className="invisible absolute;"
+            width="0"
+            height="0"
+            xmlns="http://www.w3.org/2000/svg"
+            version="1.1"
+          >
+            <defs>
+              <filter id="goo">
+                <feGaussianBlur
+                  in="SourceGraphic"
+                  stdDeviation="3"
+                  result="blur"
+                />
+                <feColorMatrix
+                  in="blur"
+                  mode="matrix"
+                  values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                  result="goo"
+                />
+                <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+              </filter>
+            </defs>
+          </svg>
         </div>
         <div className="col-span-2 grid grid-rows-4 gap-3">
           <SocialsList />
@@ -34,6 +58,14 @@ export default function Home({ data }: any) {
         <div className="border-2 border-solid border-black p-3 flex flex-col gap-3">
           <ToolboxList />
         </div>
+        <iframe
+          className="rounded-md"
+          src="https://open.spotify.com/embed/playlist/21rxvdHPMHhgFTLhz9Ohdw?utm_source=generator"
+          width="100%"
+          height="352"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        ></iframe>
       </div>
     </main>
   )

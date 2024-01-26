@@ -1,6 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 .clip-path-documentShape {
-  clip-path: polygon(0 10%, 22% 10%, 34% 0, 100% 0, 100% 100%, 0 100%);
+  clip-path: polygon(0 8%, 25% 8%, 40% 0, 100% 0, 100% 100%, 0 100%);
+}
+.parent {
+  filter: url('#goo');
+}
+
+.Grid-Grouping {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 20px 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    'heading .'
+    '. .'
+    'title title';
+}
+.grid-heading {
+  grid-area: heading;
+}
+.grid-title {
+  grid-area: title;
 }
