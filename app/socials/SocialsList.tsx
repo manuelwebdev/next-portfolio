@@ -1,7 +1,8 @@
 import { Button, buttonVariants } from '@/components/ui/button'
 import { get } from '@vercel/edge-config'
 import Link from 'next/link'
-import { FaLinkedin } from 'react-icons/fa6'
+import { IconContext } from 'react-icons'
+import { FaLinkedinIn } from 'react-icons/fa6'
 
 // get socials from server
 type Social = {
@@ -22,10 +23,10 @@ export default async function SocialsList() {
           <Link
             key={social?.name}
             href={social?.link}
-            className={`border-2 border-solid border-black flex flex-col items-center justify-center rounded-md`}
+            className={`p-3 border-2 border-solid border-black flex flex-col items-center justify-center rounded-md`}
           >
-            <FaLinkedin />
-            {social?.name}
+            <FaLinkedinIn />
+            {/* {social?.name} */}
           </Link>
         </>
       ))}

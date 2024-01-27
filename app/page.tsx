@@ -6,41 +6,45 @@ import ServerData from './ServerData'
 import { buttonVariants } from '@/components/ui/button'
 import SocialsList from './socials/SocialsList'
 import ToolboxList from './toolbox/ToolboxList'
+import { IconContext } from 'react-icons'
 
 export default function Home({ data }: any) {
+  const HEADING1 = 'text-heading1 font-bold'
   return (
-    <main className="h-full flex flex-col p-4 gap-6">
-      <div className="w-full grid grid-cols-8 gap-3 ">
+    <main className="h-full flex flex-col p-4 gap-4">
+      <div className="flex flex-col gap-5 w-full bg-foreground rounded-lg p-6">
+        <h1 className="text-heading1 font-bold leading-[3rem]">
+          Hello,
+          <br /> I'm Manuel
+        </h1>
+        <p className="text-heading2 font-medium leading-[1.813rem]">
+          A web developer. Since 2017 I&apos;ve been on a journey to create
+          amazing digital experiences for people. Currently based in Lehi, Utah.
+        </p>
+        <Link
+          href={''}
+          className="bg-primary py-2 px-4 w-fit text-white rounded"
+        >
+          View My Work
+        </Link>
+        <div className="socialList flex gap-4">
+          <SocialsList />
+        </div>
+      </div>
+      <div className="">
+        <Image
+          className="clip-path-documentShape rounded-md"
+          src={ocean}
+          alt="me by the ocean"
+        />
+      </div>
+      {/* <div className="w-full grid grid-cols-8 gap-3 ">
         <div className="parent Grid-Grouping p-[1px] rounded-md col-span-6">
           <Image
             className="clip-path-documentShape rounded-md"
             src={ocean}
             alt="me by the ocean"
           />
-          <svg
-            className="invisible absolute;"
-            width="0"
-            height="0"
-            xmlns="http://www.w3.org/2000/svg"
-            version="1.1"
-          >
-            <defs>
-              <filter id="goo">
-                <feGaussianBlur
-                  in="SourceGraphic"
-                  stdDeviation="3"
-                  result="blur"
-                />
-                <feColorMatrix
-                  in="blur"
-                  mode="matrix"
-                  values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-                  result="goo"
-                />
-                <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-              </filter>
-            </defs>
-          </svg>
         </div>
         <div className="col-span-2 grid grid-rows-4 gap-3">
           <SocialsList />
@@ -66,7 +70,7 @@ export default function Home({ data }: any) {
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
         ></iframe>
-      </div>
+      </div> */}
     </main>
   )
 }
