@@ -48,6 +48,7 @@ export default async function SocialsList() {
             <Link
               key={social?.name}
               href={social?.link}
+              target="_blank"
               className={`p-3 border-2 border-solid border-black flex flex-col items-center justify-center rounded-full`}
             >
               {socialIcon}

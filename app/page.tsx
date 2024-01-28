@@ -7,23 +7,25 @@ import { buttonVariants } from '@/components/ui/button'
 import SocialsList from './socials/SocialsList'
 import ToolboxList from './toolbox/ToolboxList'
 import { IconContext } from 'react-icons'
+import Projects from './projects/ServerProjects'
+import TitleWrapper from './wrapper/TitleWrapper'
+import ServerProjects from './projects/ServerProjects'
 
 export default function Home({ data }: any) {
-  const HEADING1 = 'text-heading1 font-bold'
   return (
-    <main className="h-full flex flex-col p-4 gap-4">
-      <div className="flex flex-col gap-5 w-full bg-foreground rounded-lg p-6">
+    <main className="h-full grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-[masonry] p-4 gap-4">
+      <div className="flex flex-col justify-center gap-5 w-full bg-foreground rounded-lg px-5 py-9">
         <h1 className="text-heading1 font-bold leading-[3rem]">
           Hello,
           <br /> I'm Manuel
         </h1>
-        <p className="text-heading2 font-medium leading-[1.813rem]">
+        <p className="text-heading2 font-regular leading-[1.813rem]">
           A web developer. Since 2017 I&apos;ve been on a journey to create
           amazing digital experiences for people. Currently based in Lehi, Utah.
         </p>
         <Link
-          href={''}
-          className="bg-primary py-2 px-4 w-fit text-white rounded"
+          href={'#projects'}
+          className="text-heading3 bg-primary py-2 px-4 w-fit text-white rounded"
         >
           View My Work
         </Link>
@@ -33,44 +35,25 @@ export default function Home({ data }: any) {
       </div>
       <div className="">
         <Image
-          className="clip-path-documentShape rounded-md"
+          className="w-full h-full object-cover rounded-md"
           src={ocean}
           alt="me by the ocean"
+          loading="lazy"
+          placeholder="blur"
+          width={400}
+          height={600}
         />
       </div>
-      {/* <div className="w-full grid grid-cols-8 gap-3 ">
-        <div className="parent Grid-Grouping p-[1px] rounded-md col-span-6">
-          <Image
-            className="clip-path-documentShape rounded-md"
-            src={ocean}
-            alt="me by the ocean"
-          />
-        </div>
-        <div className="col-span-2 grid grid-rows-4 gap-3">
-          <SocialsList />
-        </div>
+      <div id="projects">
+        <TitleWrapper title="Projects">
+          <ServerProjects />
+        </TitleWrapper>
       </div>
-      <div className="flex flex-col gap-4">
-        <h1 className="text-4xl font-semibold">Hi, I&apos;m Manuel</h1>
-        <p className="text-lg">
-          I like to build, tinker, create, discover, and learn new things on the
-          internet.
-        </p>
-      </div>
-      <div className="flex flex-col">
-        <h2 className="text-2xl font-semibold">My Toolbox</h2>
-        <div className="border-2 border-solid border-black p-3 flex flex-col gap-3">
+      <div id="toolbox">
+        <TitleWrapper title="Toolbox">
           <ToolboxList />
-        </div>
-        <iframe
-          className="rounded-md"
-          src="https://open.spotify.com/embed/playlist/21rxvdHPMHhgFTLhz9Ohdw?utm_source=generator"
-          width="100%"
-          height="352"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-        ></iframe>
-      </div> */}
+        </TitleWrapper>
+      </div>
     </main>
   )
 }

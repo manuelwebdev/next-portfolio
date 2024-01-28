@@ -29,7 +29,7 @@ export default async function ToolboxList() {
     <>
       {types?.map((type: string) => (
         <div key={type} className="flex flex-col gap-2">
-          <h3 className="text-2xl font-semibold capitalize">{`${type}s`}</h3>
+          <h3 className="text-heading3 capitalize w-full border-b-2 border-b-primary border-b-solid">{`${type}`}</h3>
           <SkillListByType skills={skills} type={type} />
         </div>
       ))}

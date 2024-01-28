@@ -24,9 +24,9 @@ const config = {
       colors: {
         background: '#363A38',
         foreground: '#F9F9F9',
-        primary: '#1C3F39',
-        secondary: '#4B6F68',
-        accent: '#C4FCF0',
+        primary: 'hsl(170, 38%, 18%)',
+        secondary: 'hsl(168, 19%, 36%)',
+        accent: 'hsl(167, 90%, 88%)',
       },
       fontSize: {
         display1: '6.875rem',
