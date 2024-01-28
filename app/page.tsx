@@ -1,4 +1,5 @@
 import ocean from './../public/me_by_the_ocean.jpg'
+import me_back from './../public/me_back.webp'
 import Image from 'next/image'
 import { FaLinkedin } from 'react-icons/fa6'
 import Link from 'next/link'
@@ -52,6 +53,48 @@ export default function Home({ data }: any) {
       <div id="toolbox">
         <TitleWrapper title="Toolbox">
           <ToolboxList />
+        </TitleWrapper>
+      </div>
+      <div id="about">
+        <TitleWrapper title="About">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Image
+              className="w-full h-full max-h-[300px] md:max-h-full object-cover rounded-md"
+              src={me_back}
+              alt="back of me while I take a photo"
+              loading="lazy"
+              placeholder="blur"
+              width={400}
+              height={600}
+            />
+            <p className="text-paragraph">
+              Lorem ipsum dolor sit amet consectetur adipiscing elit faucibus
+              penatibus mus, sociis nec pellentesque sem neque morbi himenaeos
+              aliquam ut integer taciti, primis cursus aptent nisi proin nunc id
+              cras ridiculus. Fermentum laoreet dapibus porta integer nullam
+              semper ultrices aliquet eu lacinia mus porttitor ullamcorper,
+              vehicula velit nibh convallis morbi vulputate consequat potenti
+              euismod mi non. A pretium nunc eleifend in augue penatibus
+              dignissim enim taciti feugiat inceptos nascetur nisl justo
+              habitasse aliquet, cum bibendum viverra consequat est nibh dui
+              curabitur nec ultrices natoque lectus sagittis litora
+              pellentesque.
+            </p>
+          </div>
+        </TitleWrapper>
+      </div>
+      <div id="testimonial">
+        <TitleWrapper title="Testimonial">
+          <div className="h-full flex flex-col justify-center items-center gap-2">
+            <div className="w-14 h-14 bg-primary rounded-full"></div>
+            <p className="w-full px-6 text-heading2">
+              "His title was Junior Web Developer but his talent, empathy for
+              the customer, and continued growth while at Lion demonstrate his
+              value to any team he finds himself on. I hope to work with Manuel
+              again."
+            </p>
+            <p className="w-full text-heading2 text-right">- Jeremy Barger</p>
+          </div>
         </TitleWrapper>
       </div>
     </main>
