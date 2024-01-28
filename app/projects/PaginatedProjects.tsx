@@ -34,7 +34,7 @@ export default function PaginatedProjects({ projects }: any) {
         </p>
         <button
           onClick={() => setCurrentPage(currentPage - 1)}
-          className="col-span-1 text-heading3 px-2 py-1 border-2 border-solid border-black rounded bg-accent disabled:opacity-30 disabled:cursor-not-allowed"
+          className="col-span-1 text-heading3 px-2 py-1 rounded bg-accent disabled:opacity-50 disabled:cursor-not-allowed"
           disabled={currentPage === 1}
         >
           Previous
@@ -42,7 +42,7 @@ export default function PaginatedProjects({ projects }: any) {
 
         <button
           onClick={() => setCurrentPage(currentPage + 1)}
-          className="col-span-1 text-heading3 px-2 py-1 border-2 border-solid border-black rounded bg-accent disabled:opacity-30 disabled:cursor-not-allowed"
+          className="col-span-1 text-heading3 px-2 py-1 rounded bg-accent disabled:opacity-50 disabled:cursor-not-allowed"
           disabled={currentPage === totalPages}
         >
           Next

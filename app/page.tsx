@@ -3,18 +3,15 @@ import me_back from './../public/me_back.webp'
 import Image from 'next/image'
 import { FaLinkedin } from 'react-icons/fa6'
 import Link from 'next/link'
-import ServerData from './ServerData'
-import { buttonVariants } from '@/components/ui/button'
 import SocialsList from './socials/SocialsList'
 import ToolboxList from './toolbox/ToolboxList'
-import { IconContext } from 'react-icons'
-import Projects from './projects/ServerProjects'
 import TitleWrapper from './wrapper/TitleWrapper'
 import ServerProjects from './projects/ServerProjects'
+import ContactForm from './contact/ContactForm'
 
 export default function Home({ data }: any) {
   return (
-    <main className="h-full grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-[masonry] p-4 gap-4">
+    <main className="h-full grid grid-cols-1 p-4 gap-4">
       <div className="flex flex-col justify-center gap-5 w-full bg-foreground rounded-lg px-5 py-9">
         <h1 className="text-heading1 font-bold leading-[3rem]">
           Hello,
@@ -31,20 +28,18 @@ export default function Home({ data }: any) {
           View My Work
         </Link>
         <div className="socialList flex gap-4">
-          <SocialsList />
+          <SocialsList color="black" />
         </div>
       </div>
-      <div className="">
-        <Image
-          className="w-full h-full object-cover rounded-md"
-          src={ocean}
-          alt="me by the ocean"
-          loading="lazy"
-          placeholder="blur"
-          width={400}
-          height={600}
-        />
-      </div>
+      <Image
+        className="w-full h-full max-h-[30rem] sm:max-h-full object-cover object-bottom rounded-md"
+        src={ocean}
+        alt="me by the ocean"
+        loading="lazy"
+        placeholder="blur"
+        width={400}
+        height={600}
+      />
       <div id="projects">
         <TitleWrapper title="Projects">
           <ServerProjects />
@@ -84,7 +79,7 @@ export default function Home({ data }: any) {
         </TitleWrapper>
       </div>
       <div id="testimonial">
-        <TitleWrapper title="Testimonial">
+        <TitleWrapper>
           <div className="h-full flex flex-col justify-center items-center gap-2">
             <div className="w-14 h-14 bg-primary rounded-full"></div>
             <p className="w-full px-6 text-heading2">
@@ -96,6 +91,32 @@ export default function Home({ data }: any) {
             <p className="w-full text-heading2 text-right">- Jeremy Barger</p>
           </div>
         </TitleWrapper>
+      </div>
+      <div className="contact">
+        <TitleWrapper title="Contact">
+          <ContactForm />
+        </TitleWrapper>
+      </div>
+      <div id="playlist">
+        <TitleWrapper title="Playlist">
+          <iframe
+            src="https://open.spotify.com/embed/playlist/3hlmdEryvkBpiyp0oSC3tA?utm_source=generator"
+            width="100%"
+            height="352"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            className="rounded-lg"
+          ></iframe>
+        </TitleWrapper>
+      </div>
+      <div
+        id="footer"
+        className="col-span-1 sm:col-span-2 flex flex-col items-center gap-3 py-3"
+      >
+        <p className="text-heading3 text-white">{`© Copyright ${new Date().getFullYear()} - Manuel Espinoza`}</p>
+        <div className="socialList flex gap-4">
+          <SocialsList color="white" />
+        </div>
       </div>
     </main>
   )

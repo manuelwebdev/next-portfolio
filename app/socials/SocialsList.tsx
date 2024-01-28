@@ -1,3 +1,4 @@
+'use client'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { get } from '@vercel/edge-config'
 import Link from 'next/link'
@@ -19,7 +20,7 @@ async function getSocials() {
   return data
 }
 
-export default async function SocialsList() {
+export default async function SocialsList({ color }: { color: string }) {
   const socials = await getSocials()
   return (
     <>
@@ -49,9 +50,17 @@ export default async function SocialsList() {
               key={social?.name}
               href={social?.link}
               target="_blank"
-              className={`p-3 border-2 border-solid border-black flex flex-col items-center justify-center rounded-full`}
+              className={`p-3 border-2 border-solid border-${color} flex flex-col items-center justify-center rounded-full`}
             >
-              {socialIcon}
+              <IconContext.Provider
+                value={{
+                  color: color,
+                  size: '1.5rem',
+                  className: 'w-6 h-6',
+                }}
+              >
+                {socialIcon}
+              </IconContext.Provider>
               {/* {social?.name} */}
             </Link>
           </>
