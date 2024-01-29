@@ -26,14 +26,14 @@ export default function Home({ data }: any) {
           target="_blank"
           className="bg-accent rounded-lg flex items-center justify-center gap-1 text-sm sm:text-paragraph"
         >
-          Let's Connect
+          Let&lsquo;s Connect
           <FaArrowRight />
         </Link>
       </div>
       <div className="flex flex-col justify-center gap-5 w-full sm:max-h-[90dvh] bg-foreground rounded-lg px-5 py-9">
         <h2 className="text-heading1 font-bold leading-[3rem]">
           Hello,
-          <br /> I'm Manuel
+          <br /> I&lsquo;m Manuel
         </h2>
         <p className="max-w-[450px] text-heading2 font-regular leading-[1.813rem]">
           A web developer. Since 2017 I&apos;ve been on a journey to create
