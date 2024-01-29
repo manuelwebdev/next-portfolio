@@ -1,7 +1,6 @@
 import ocean from './../public/me_by_the_ocean.jpg'
 import me_back from './../public/me_back.webp'
 import Image from 'next/image'
-import { FaArrowRight } from 'react-icons/fa6'
 import Link from 'next/link'
 import SocialsList from './_components/SocialsList'
 import ToolboxList from './_components/ToolboxList'
@@ -9,46 +8,11 @@ import TitleWrapper from './_components/TitleWrapper'
 import ServerProjects from './_components/ServerProjects'
 import ContactForm from './_components/ContactForm'
 import Header from './_components/Header'
-import logo from './../public/Logo.svg'
 
 export default function Home({ data }: any) {
   return (
     <main className="h-full grid grid-cols-1 sm:grid-cols-2 p-4 gap-4">
-      <div className="col-span-1 sm:col-span-2 rounded-lg grid grid-cols-[1fr_8rem] gap-4">
-        <div className="flex items-center gap-2 bg-foreground py-1 px-3 sm:px-6 rounded-lg">
-          <Image src={logo} alt={'logo'} />
-          <h1 className="text-heading2 font-bold leading-6 hidden sm:block">
-            Manuel Espinoza
-          </h1>
-        </div>
-        <Link
-          href={'https://www.linkedin.com/in/manuelwebdev/'}
-          target="_blank"
-          className="bg-accent rounded-lg flex items-center justify-center gap-1 text-sm sm:text-paragraph"
-        >
-          Let&lsquo;s Connect
-          <FaArrowRight />
-        </Link>
-      </div>
-      <div className="flex flex-col justify-center gap-5 w-full sm:max-h-[90dvh] bg-foreground rounded-lg px-5 py-9">
-        <h2 className="text-heading1 font-bold leading-[3rem]">
-          Hello,
-          <br /> I&lsquo;m Manuel
-        </h2>
-        <p className="max-w-[450px] text-heading2 font-regular leading-[1.813rem]">
-          A web developer. Since 2017 I&apos;ve been on a journey to create
-          amazing digital experiences for people. Currently based in Lehi, Utah.
-        </p>
-        <Link
-          href={'#projects'}
-          className="text-heading3 bg-primary py-2 px-4 w-fit text-white rounded"
-        >
-          View My Work
-        </Link>
-        <div className="socialList flex gap-4">
-          <SocialsList color="black" />
-        </div>
-      </div>
+      <Header />
       <Image
         className="w-full h-full max-h-[30rem] sm:max-h-[90dvh] object-cover object-bottom rounded-md"
         src={ocean}

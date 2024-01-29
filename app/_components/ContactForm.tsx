@@ -1,7 +1,7 @@
-export default function () {
+export default function ContactForm() {
   return (
     <div className="w-full">
-      <form action="" method="POST" className="flex flex-col gap-2">
+      <form action="/" method="POST" className="flex flex-col gap-2">
         <input
           type="text"
           name="first name"
@@ -29,7 +29,7 @@ export default function () {
         <input
           type="submit"
           value="Submit"
-          className="w-fit self-end bg-primary text-white border border-primary border-solid py-1 px-8 rounded"
+          className="cursor-pointer w-fit self-end bg-primary text-white border border-primary border-solid py-1 px-8 rounded"
         />
       </form>
     </div>
