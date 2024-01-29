@@ -25,7 +25,6 @@ export default async function SocialsList({ color }: { color: string }) {
   return (
     <>
       {socials?.map((social: Social) => {
-        console.log(social.name)
         let socialIcon
         switch (social?.name) {
           case 'LinkedIn':
@@ -50,13 +49,12 @@ export default async function SocialsList({ color }: { color: string }) {
               key={social?.name}
               href={social?.link}
               target="_blank"
-              className={`p-3 border-2 border-solid border-${color} flex flex-col items-center justify-center rounded-full`}
+              className={`group p-3 border-2 border-solid border-${color} hover:border-transparent flex flex-col items-center justify-center rounded-full hover:bg-secondary transition-all duration-700 hover:duration-300`}
             >
               <IconContext.Provider
                 value={{
-                  color: color,
                   size: '1.5rem',
-                  className: 'w-6 h-6',
+                  className: `group-hover:fill-white group-hover:duration-300 duration-700 w-6 h-6 fill-${color}`,
                 }}
               >
                 {socialIcon}

@@ -14,12 +14,14 @@ export default function ProjectCard({
       <Image
         src={imageUrl}
         alt={`${title}: ${description}`}
-        width={600}
-        height={400}
+        width={1000}
+        height={1000}
         loading="lazy"
-        className="rounded-sm"
+        className="w-full object-cover rounded-sm "
       />
-      <h2 className="text-heading2 font-bold">{title}</h2>
+      <h2 className="text-heading3 md:text-heading2 font-bold leading-5">
+        {title}
+      </h2>
       <p className="text-paragraph">{description}</p>
     </div>
   )

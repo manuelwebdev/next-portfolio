@@ -1,5 +1,4 @@
 import { get } from '@vercel/edge-config'
-import ProjectCard from './ProjectCard'
 import { Suspense, useState } from 'react'
 import PaginatedProjects from './PaginatedProjects'
 
