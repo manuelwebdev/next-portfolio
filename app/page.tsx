@@ -93,9 +93,10 @@ export default function Home({ data }: any) {
         <div className="h-full flex flex-col justify-center items-center gap-2">
           <div className="w-14 h-14 bg-primary rounded-full"></div>
           <p className="w-full px-6 text-heading3 md:text-heading2">
-            "His title was Junior Web Developer but his talent, empathy for the
-            customer, and continued growth while at Lion demonstrate his value
-            to any team he finds himself on. I hope to work with Manuel again."
+            &lsquo;&lsquo;His title was Junior Web Developer but his talent,
+            empathy for the customer, and continued growth while at Lion
+            demonstrate his value to any team he finds himself on. I hope to
+            work with Manuel again.&lsquo;&lsquo;
           </p>
           <p className="w-full text-heading3 md:text-heading2 text-right">
             - Jeremy Barger
