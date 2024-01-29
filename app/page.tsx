@@ -1,3 +1,4 @@
+import * as Tabs from '@radix-ui/react-tabs'
 import ocean from './../public/me_by_the_ocean.jpg'
 import me_back from './../public/me_back.webp'
 import Image from 'next/image'
@@ -9,7 +10,7 @@ import ServerProjects from './_components/ServerProjects'
 import ContactForm from './_components/ContactForm'
 import Header from './_components/Header'
 
-export default function Home({ data }: any) {
+export default function Page() {
   return (
     <main className="h-full grid grid-cols-1 sm:grid-cols-2 p-4 gap-4">
       <Header />
@@ -48,7 +49,7 @@ export default function Home({ data }: any) {
         <ToolboxList />
       </TitleWrapper>
       <TitleWrapper title="About" id="about">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <Image
             className="w-full h-full max-h-[300px] md:max-h-full object-cover rounded-md"
             src={me_back}
@@ -89,56 +90,14 @@ export default function Home({ data }: any) {
       <TitleWrapper title="Contact" id="contact">
         <ContactForm />
       </TitleWrapper>
-      <TitleWrapper title="Playlists" id="playlist">
-        <Link
-          className="w-fit text-heading2 hover:text-secondary underline transition-all duration-700 hover:duration-200"
-          href={
-            'https://open.spotify.com/playlist/3hlmdEryvkBpiyp0oSC3tA?si=5c4de992b9ed4576'
-          }
-          target="_blank"
-        >
-          Instrumental
-        </Link>
+      <TitleWrapper title="Playlist" id="playlist">
         <iframe
           src="https://open.spotify.com/embed/playlist/3hlmdEryvkBpiyp0oSC3tA?utm_source=generator"
           width="100%"
-          height="152"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-        ></iframe>
-        <Link
-          className="w-fit text-heading2 hover:text-secondary underline transition-all duration-700 hover:duration-200"
-          href={
-            'https://open.spotify.com/playlist/21rxvdHPMHhgFTLhz9Ohdw?si=7a569b8ca7264bb0'
-          }
-          target="_blank"
-        >
-          Metal
-        </Link>
-        <iframe
-          src="https://open.spotify.com/embed/playlist/21rxvdHPMHhgFTLhz9Ohdw?utm_source=generator"
-          width="100%"
           height="352"
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
         ></iframe>
-        <Link
-          className="w-fit text-heading2 hover:text-secondary underline transition-all duration-700 hover:duration-200"
-          href={
-            'https://open.spotify.com/playlist/74sUjcvpGfdOvCHvgzNEDO?si=4bc3dc87a6cb4d4c'
-          }
-          target="_blank"
-        >
-          Lofi
-        </Link>
-        <iframe
-          src="https://open.spotify.com/embed/playlist/74sUjcvpGfdOvCHvgzNEDO?utm_source=generator"
-          width="100%"
-          height="352"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-        ></iframe>
-        {/* <Tabs /> */}
       </TitleWrapper>
       <div
         id="footer"

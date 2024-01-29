@@ -1,3 +1,4 @@
+'use server'
 import { get } from '@vercel/edge-config'
 import { Suspense, useState } from 'react'
 import PaginatedProjects from './PaginatedProjects'

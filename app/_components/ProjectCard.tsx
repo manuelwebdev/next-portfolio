@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 
 export default function ProjectCard({
@@ -10,7 +12,7 @@ export default function ProjectCard({
   description: string
 }) {
   return (
-    <div className="w-full p-2 bg-secondary rounded text-white">
+    <div className="w-full p-2 bg-secondary rounded text-white flex flex-col gap-3">
       <Image
         src={imageUrl}
         alt={`${title}: ${description}`}
@@ -19,10 +21,12 @@ export default function ProjectCard({
         loading="lazy"
         className="w-full object-cover rounded-sm "
       />
-      <h2 className="text-heading3 md:text-heading2 font-bold leading-5">
-        {title}
-      </h2>
-      <p className="text-paragraph">{description}</p>
+      <div className="flex flex-col gap-1">
+        <h2 className="text-heading3 md:text-heading2 font-bold leading-5">
+          {title}
+        </h2>
+        <p className="text-paragraph">{description}</p>
+      </div>
     </div>
   )
 }

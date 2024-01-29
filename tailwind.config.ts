@@ -36,6 +36,9 @@ const config = {
         heading3: '1.25rem',
         paragraph: '1rem',
       },
+      gridTemplateColumns: {
+        auto: 'repeat(auto-fit, minmax(250px, 1fr));',
+      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
@@ -49,9 +52,6 @@ const config = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-      },
-      gridTemplateColumns: {
-        auto: 'repeat(auto-fit, minmax(250px, 1fr));',
       },
     },
   },
