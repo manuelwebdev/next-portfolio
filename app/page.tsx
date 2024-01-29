@@ -13,6 +13,25 @@ export default function Home({ data }: any) {
   return (
     <main className="h-full grid grid-cols-1 sm:grid-cols-2 p-4 gap-4">
       <Header />
+      <div className="flex flex-col justify-center gap-5 w-full sm:max-h-[90dvh] bg-foreground rounded-lg px-5 py-9">
+        <h2 className="text-heading1 font-bold leading-[3rem]">
+          Hello,
+          <br /> I&lsquo;m Manuel
+        </h2>
+        <p className="max-w-[450px] text-heading2 font-regular leading-[1.813rem]">
+          A web developer. Since 2017 I&apos;ve been on a journey to create
+          amazing digital experiences for people. Currently based in Lehi, Utah.
+        </p>
+        <Link
+          href={'#projects'}
+          className="text-heading3 bg-primary py-2 px-4 w-fit text-white rounded"
+        >
+          View My Work
+        </Link>
+        <div className="socialList flex gap-4">
+          <SocialsList color="black" />
+        </div>
+      </div>
       <Image
         className="w-full h-full max-h-[30rem] sm:max-h-[90dvh] object-cover object-bottom rounded-md"
         src={ocean}
