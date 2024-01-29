@@ -1,5 +1,5 @@
 'use client'
-import { Button, buttonVariants } from '@/components/ui/button'
+
 import { get } from '@vercel/edge-config'
 import Link from 'next/link'
 import { IconContext } from 'react-icons'
