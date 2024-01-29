@@ -1,26 +1,61 @@
 import type { Config } from 'tailwindcss'
 
-const config: Config = {
+const config = {
+  darkMode: ['class'],
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
   ],
+  prefix: '',
   theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        '2xl': '1400px',
+      },
+    },
     extend: {
       fontFamily: {
-        dosis: ['Dosis', 'sans-serif'],
+        sans: ['Dosis', 'sans-serif'],
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        background: '#363A38',
+        foreground: '#F9F9F9',
+        primary: 'hsl(170, 38%, 18%)',
+        secondary: 'hsl(168, 19%, 36%)',
+        accent: 'hsl(167, 90%, 88%)',
       },
-      clipPath: {
-        documentShape: 'polygon(23% 0, 100% 0, 100% 99%, 0 100%, 0 21%)',
+      fontSize: {
+        display1: '6.875rem',
+        display2: '4.25rem',
+        heading1: '2.625rem',
+        heading2: '1.625rem',
+        heading3: '1.25rem',
+        paragraph: '1rem',
+      },
+      keyframes: {
+        'accordion-down': {
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' },
+        },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+      },
+      gridTemplateColumns: {
+        auto: 'repeat(auto-fit, minmax(250px, 1fr));',
       },
     },
   },
-  plugins: [],
-}
+  plugins: [require('tailwindcss-animate')],
+} satisfies Config
+
 export default config
