@@ -1,13 +1,6 @@
-import { get } from '@vercel/edge-config'
-
 type Skill = {
   name: string
   type: string
-}
-
-async function getSkills() {
-  const data = await get<Skill[]>('skills')
-  return data
 }
 
 function SkillListByType({ skills, type }: { skills: Skill[]; type: string }) {
@@ -22,17 +15,22 @@ function SkillListByType({ skills, type }: { skills: Skill[]; type: string }) {
   )
 }
 
-export default async function ToolboxList() {
-  const skills = (await getSkills()) || []
-  const types = [...new Set(skills?.map((skill: Skill) => skill?.type))]
+export default async function ToolboxList({ skills }: any) {
+  const types: string[] = [
+    ...new Set(skills?.map((skill: Skill) => skill?.type as string)),
+  ]
+  console.log({ types })
   return (
     <>
-      {types?.map((type: string) => (
-        <div key={type} className="flex flex-col gap-2">
-          <h3 className="text-heading3 capitalize w-full border-b-2 border-b-primary border-b-solid">{`${type}`}</h3>
-          <SkillListByType skills={skills} type={type} />
-        </div>
-      ))}
+      {skills &&
+        types?.map((type: string, index: number) => (
+          <div key={`${type}-${index}`} className="flex flex-col gap-2">
+            <h3 className="text-heading3 capitalize w-full border-b-2 border-b-primary border-b-solid">
+              type
+            </h3>
+            <SkillListByType skills={skills} type={type} />
+          </div>
+        ))}
     </>
   )
 }

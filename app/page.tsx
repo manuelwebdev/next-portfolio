@@ -9,8 +9,17 @@ import TitleWrapper from './_components/TitleWrapper'
 import ServerProjects from './_components/ServerProjects'
 import ContactForm from './_components/ContactForm'
 import Header from './_components/Header'
+import { getAll } from '@vercel/edge-config'
+import { NextResponse } from 'next/server'
 
-export default function Page() {
+async function getServerData() {
+  const data = await getAll()
+  return data
+}
+
+export default async function Page() {
+  const serverData = (await getServerData()) || {}
+  console.log(serverData)
   return (
     <main className="h-full grid grid-cols-1 sm:grid-cols-2 p-4 gap-4">
       <Header />
@@ -43,10 +52,10 @@ export default function Page() {
         height={600}
       />
       <TitleWrapper title="Projects" id="projects">
-        <ServerProjects />
+        <ServerProjects projects={serverData?.projects} />
       </TitleWrapper>
       <TitleWrapper title="Toolbox" id="toolbox">
-        <ToolboxList />
+        <ToolboxList skills={serverData?.skills} />
       </TitleWrapper>
       <TitleWrapper title="About" id="about">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -118,7 +127,7 @@ export default function Page() {
       >
         <p className="text-heading3 text-white">{`© Copyright ${new Date().getFullYear()} - Manuel Espinoza`}</p>
         <div className="socialList flex gap-4">
-          <SocialsList color="white" />
+          <SocialsList socials={serverData?.socials} color="white" />
         </div>
       </div>
     </main>
