@@ -11,6 +11,7 @@ import ContactForm from './_components/ContactForm'
 import Header from './_components/Header'
 import { getAll } from '@vercel/edge-config'
 import { NextResponse } from 'next/server'
+import { Suspense } from 'react'
 
 async function getServerData() {
   const data = await getAll()
@@ -19,7 +20,6 @@ async function getServerData() {
 
 export default async function Page() {
   const serverData = (await getServerData()) || {}
-  console.log(serverData)
   return (
     <main className="h-full grid grid-cols-1 sm:grid-cols-2 p-4 gap-4">
       <Header />
@@ -52,7 +52,9 @@ export default async function Page() {
         height={600}
       />
       <TitleWrapper title="Projects" id="projects">
-        <ServerProjects projects={serverData?.projects} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <ServerProjects projects={serverData?.projects} />
+        </Suspense>
       </TitleWrapper>
       <TitleWrapper title="Toolbox" id="toolbox">
         <ToolboxList skills={serverData?.skills} />

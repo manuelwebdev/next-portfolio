@@ -18,9 +18,7 @@ async function getProjects() {
 export default async function ServerProjects({ projects }: any) {
   return (
     <div className="flex flex-col gap-2">
-      <Suspense fallback={<div>Loading...</div>}>
-        <PaginatedProjects projects={projects} />
-      </Suspense>
+      <PaginatedProjects projects={projects} />
     </div>
   )
 }
