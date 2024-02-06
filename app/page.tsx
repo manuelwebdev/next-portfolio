@@ -71,13 +71,13 @@ export default async function Page() {
             height={600}
           />
           <p className="text-paragraph">
-            Hello, I'm Manuel—a passionate web developer and designer dedicated
-            to crafting exceptional digital experiences. With a keen eye for
-            aesthetics and a love for problem-solving, I specialize in frontend
-            development, designing and building visually stunning websites. I
-            also delve into the world of backend development, crafting robust
-            APIs to enhance the functionality and interactivity of web
-            applications.
+            Hello, I&apos;m Manuel—a passionate web developer and designer
+            dedicated to crafting exceptional digital experiences. With a keen
+            eye for aesthetics and a love for problem-solving, I specialize in
+            frontend development, designing and building visually stunning
+            websites. I also delve into the world of backend development,
+            crafting robust APIs to enhance the functionality and interactivity
+            of web applications.
             <br />
             <br />
             Beyond the realm of coding, I immerse myself in various hobbies. As
@@ -90,10 +90,10 @@ export default async function Page() {
             <br />
             <br />
             Originally from the sunny state of California, my journey has led me
-            to call Utah home for the majority of my life. Let's connect as I
-            continue on this perpetual journey of learning, blending creativity,
-            technology, and a dash of personal flair to deliver memorable online
-            experiences.
+            to call Utah home for the majority of my life. Let&apos;s connect as
+            I continue on this perpetual journey of learning, blending
+            creativity, technology, and a dash of personal flair to deliver
+            memorable online experiences.
           </p>
         </div>
       </TitleWrapper>
