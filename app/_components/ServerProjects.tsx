@@ -1,4 +1,4 @@
-'use server'
+import { NextResponse } from 'next/server'
 import { get } from '@vercel/edge-config'
 import { Suspense, useState } from 'react'
 import PaginatedProjects from './PaginatedProjects'
@@ -12,16 +12,13 @@ export type Project = {
 
 async function getProjects() {
   const data = await get<Project[]>('projects')
-  return data
+  return NextResponse.json(data)
 }
 
-export default async function ServerProjects() {
-  const projects = await getProjects()
+export default async function ServerProjects({ projects }: any) {
   return (
     <div className="flex flex-col gap-2">
-      <Suspense fallback={<div>Loading...</div>}>
-        <PaginatedProjects projects={projects} />
-      </Suspense>
+      <PaginatedProjects projects={projects} />
     </div>
   )
 }

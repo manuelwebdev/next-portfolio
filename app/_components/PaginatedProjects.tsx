@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Project } from './ServerProjects'
 import ProjectCard from './ProjectCard'
+import next from 'next'
 
 export function paginate(
   array: any[],
@@ -12,17 +13,33 @@ export function paginate(
   return array.slice((page_number - 1) * page_size, page_number * page_size)
 }
 
-export default function PaginatedProjects({ projects }: any) {
-  const [currentPage, setCurrentPage] = useState(1)
-  const totalPages = Math.ceil((projects?.length ?? 0) / 4)
-  const paginatedProjects = paginate(projects ?? [], 4, currentPage)
+type project = {
+  name: string
+  description: string
+  link: string
+  tags: string[]
+}
+
+export default function PaginatedProjects({
+  projects,
+}: {
+  projects: project[]
+}) {
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [projectsPerPage] = useState<number>(4)
+  const totalPages = Math.ceil(projects?.length / projectsPerPage)
+  const paginatedProjects = useMemo(
+    () => paginate(projects, projectsPerPage, currentPage),
+    [currentPage],
+  )
+
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-        {paginatedProjects?.map((project: Project) => {
+        {paginatedProjects?.map((project: Project, index: number) => {
           return (
             <ProjectCard
-              key={project?.name}
+              key={`project?.name-${index}`}
               imageUrl={'https://picsum.photos/seed/picsum/300/100'}
               title={project?.name}
               description={project?.description}
@@ -30,28 +47,26 @@ export default function PaginatedProjects({ projects }: any) {
           )
         })}
       </div>
-      {totalPages > 1 && (
-        <div className="flex flex-row justify-end gap-2">
-          <p className="self-center justify-self-end text-paragraph">
-            Page {currentPage} of {totalPages}
-          </p>
-          <button
-            onClick={() => setCurrentPage(currentPage - 1)}
-            className="w-20 text-heading3 px-2 py-1 rounded bg-accent disabled:opacity-50 disabled:cursor-not-allowed"
-            disabled={currentPage === 1}
-          >
-            Previous
-          </button>
+      <div className="flex flex-row justify-end gap-2">
+        <p className="self-center justify-self-end text-paragraph">
+          Page {currentPage} of {totalPages}
+        </p>
+        <button
+          onClick={(prevPage) => setCurrentPage(Number(currentPage) - 1)}
+          className="w-20 text-heading3 px-2 py-1 rounded bg-accent disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
 
-          <button
-            onClick={() => setCurrentPage(currentPage + 1)}
-            className="w-20 text-heading3 px-2 py-1 rounded bg-accent disabled:opacity-50 disabled:cursor-not-allowed"
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </button>
-        </div>
-      )}
+        <button
+          onClick={(prevPage) => setCurrentPage(Number(currentPage) + 1)}
+          className="w-20 text-heading3 px-2 py-1 rounded bg-accent disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
+      </div>
     </>
   )
 }

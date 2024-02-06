@@ -15,13 +15,12 @@ type Social = {
   name: string
   link: string
 }
-async function getSocials() {
-  const data = await get<Social[]>('socials')
-  return data
-}
 
-export default async function SocialsList({ color }: { color: string }) {
-  const socials = await getSocials()
+export default async function SocialsList({
+  socials,
+}: {
+  socials: Social[] | any
+}) {
   return (
     <>
       {socials?.map((social: Social) => {
@@ -44,24 +43,23 @@ export default async function SocialsList({ color }: { color: string }) {
             break
         }
         return (
-          <>
-            <Link
-              key={social?.name}
-              href={social?.link}
-              target="_blank"
-              className={`group p-3 border-2 border-solid border-${color} hover:border-transparent flex flex-col items-center justify-center rounded-full hover:bg-secondary transition-all duration-700 hover:duration-300`}
+          <Link
+            key={social?.name}
+            href={social?.link}
+            target="_blank"
+            className={`group bg-secondary p-3 border-transparent border-2 hover:border-background flex flex-col items-center justify-center rounded-full hover:bg-secondary transition-all duration-400 hover:duration-300 hover:scale-105 hover:shadow-xl`}
+          >
+            <IconContext.Provider
+              value={{
+                color: 'white',
+                size: '1.5rem',
+                className: `group-hover:fill-white group-hover:duration-300 duration-700 w-6 h-6`,
+              }}
             >
-              <IconContext.Provider
-                value={{
-                  size: '1.5rem',
-                  className: `group-hover:fill-white group-hover:duration-300 duration-700 w-6 h-6 fill-${color}`,
-                }}
-              >
-                {socialIcon}
-              </IconContext.Provider>
-              {/* {social?.name} */}
-            </Link>
-          </>
+              {socialIcon}
+            </IconContext.Provider>
+            {/* {social?.name} */}
+          </Link>
         )
       })}
     </>

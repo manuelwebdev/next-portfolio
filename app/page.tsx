@@ -9,8 +9,17 @@ import TitleWrapper from './_components/TitleWrapper'
 import ServerProjects from './_components/ServerProjects'
 import ContactForm from './_components/ContactForm'
 import Header from './_components/Header'
+import { getAll } from '@vercel/edge-config'
+import { NextResponse } from 'next/server'
+import { Suspense } from 'react'
 
-export default function Page() {
+async function getServerData() {
+  const data = await getAll()
+  return data
+}
+
+export default async function Page() {
+  const serverData = (await getServerData()) || {}
   return (
     <main className="h-full grid grid-cols-1 sm:grid-cols-2 p-4 gap-4">
       <Header />
@@ -30,7 +39,7 @@ export default function Page() {
           View My Work
         </Link>
         <div className="socialList flex gap-4">
-          <SocialsList color="black" />
+          <SocialsList socials={serverData?.socials} />
         </div>
       </div>
       <Image
@@ -43,10 +52,12 @@ export default function Page() {
         height={600}
       />
       <TitleWrapper title="Projects" id="projects">
-        <ServerProjects />
+        <Suspense fallback={<div>Loading...</div>}>
+          <ServerProjects projects={serverData?.projects} />
+        </Suspense>
       </TitleWrapper>
       <TitleWrapper title="Toolbox" id="toolbox">
-        <ToolboxList />
+        <ToolboxList skills={serverData?.skills} />
       </TitleWrapper>
       <TitleWrapper title="About" id="about">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -60,16 +71,29 @@ export default function Page() {
             height={600}
           />
           <p className="text-paragraph">
-            Lorem ipsum dolor sit amet consectetur adipiscing elit faucibus
-            penatibus mus, sociis nec pellentesque sem neque morbi himenaeos
-            aliquam ut integer taciti, primis cursus aptent nisi proin nunc id
-            cras ridiculus. Fermentum laoreet dapibus porta integer nullam
-            semper ultrices aliquet eu lacinia mus porttitor ullamcorper,
-            vehicula velit nibh convallis morbi vulputate consequat potenti
-            euismod mi non. A pretium nunc eleifend in augue penatibus dignissim
-            enim taciti feugiat inceptos nascetur nisl justo habitasse aliquet,
-            cum bibendum viverra consequat est nibh dui curabitur nec ultrices
-            natoque lectus sagittis litora pellentesque.
+            Hello, I&apos;m Manuel—a passionate web developer and designer
+            dedicated to crafting exceptional digital experiences. With a keen
+            eye for aesthetics and a love for problem-solving, I specialize in
+            frontend development, designing and building visually stunning
+            websites. I also delve into the world of backend development,
+            crafting robust APIs to enhance the functionality and interactivity
+            of web applications.
+            <br />
+            <br />
+            Beyond the realm of coding, I immerse myself in various hobbies. As
+            an avid Dungeons & Dragons player, I explore imaginative realms and
+            spin epic tales. In the kitchen, I channel my creativity into
+            cooking and savoring diverse cuisines, always on the lookout for new
+            flavors and culinary techniques. When away from the computer screen,
+            I unwind by indulging in my favorite TV shows and movies or diving
+            into the immersive worlds of video games.
+            <br />
+            <br />
+            Originally from the sunny state of California, my journey has led me
+            to call Utah home for the majority of my life. Let&apos;s connect as
+            I continue on this perpetual journey of learning, blending
+            creativity, technology, and a dash of personal flair to deliver
+            memorable online experiences.
           </p>
         </div>
       </TitleWrapper>
@@ -105,7 +129,7 @@ export default function Page() {
       >
         <p className="text-heading3 text-white">{`© Copyright ${new Date().getFullYear()} - Manuel Espinoza`}</p>
         <div className="socialList flex gap-4">
-          <SocialsList color="white" />
+          <SocialsList socials={serverData?.socials ?? []} />
         </div>
       </div>
     </main>
