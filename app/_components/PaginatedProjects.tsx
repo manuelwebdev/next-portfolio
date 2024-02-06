@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Project } from './ServerProjects'
 import ProjectCard from './ProjectCard'
+import next from 'next'
 
 export function paginate(
   array: any[],
@@ -26,106 +27,87 @@ export default function PaginatedProjects({
 }) {
   // take in projects and paginate them by 4 and create next and previous buttons to navigate between pages
 
-  const [currentPage, setCurrentPage] = useState(1)
-  const [projectsPerPage] = useState(4)
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [projectsPerPage] = useState<number>(4)
   const totalPages = Math.ceil(projects?.length / projectsPerPage)
-  const paginatedProjects = paginate(projects, projectsPerPage, currentPage)
-
-  const handlePageChange = (pageNumber: number) => {
-    setCurrentPage(pageNumber)
-  }
-
-  const handlePreviousPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1)
-    }
-  }
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1)
-    }
-  }
-
-  const handleLastPage = () => {
-    setCurrentPage(totalPages)
-  }
-
-  const handleFirstPage = () => {
-    setCurrentPage(1)
-  }
+  // const paginatedProjects = paginate(projects, projectsPerPage, currentPage)
+  const paginatedProjects = useMemo(
+    () => paginate(projects, projectsPerPage, currentPage),
+    [currentPage],
+  )
+  console.log({ currentPage, totalPages, paginatedProjects })
 
   return (
-    <>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-        {paginatedProjects?.map((project: project, index: number) => {
-          return (
-            <ProjectCard
-              key={`project?.name-${index}`}
-              imageUrl={'https://picsum.photos/seed/picsum/300/100'}
-              title={project?.name}
-              description={project?.description}
-              // link={project?.link}
-              // tags={project?.tags}
-            />
-          )
-        })}
-      </div>
-
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+      {paginatedProjects?.map((project: project, index: number) => {
+        return (
+          <ProjectCard
+            key={`project?.name-${index}`}
+            imageUrl={'https://picsum.photos/seed/picsum/300/100'}
+            title={project?.name}
+            description={project?.description}
+            // link={project?.link}
+            // tags={project?.tags}
+          />
+        )
+      })}
       <div className="flex flex-row justify-end gap-2">
         <p className="self-center justify-self-end text-paragraph">
           Page {currentPage} of {totalPages}
         </p>
         <button
-          onClick={(prevPage) => setCurrentPage(+prevPage - 1)}
+          onClick={() => setCurrentPage(Number(currentPage) - 1)}
           className="w-20 text-heading3 px-2 py-1 rounded bg-accent disabled:opacity-50 disabled:cursor-not-allowed"
           disabled={currentPage === 1}
         >
           Previous
         </button>
-
         <button
-          onClick={(prevPage) => setCurrentPage(+prevPage + 1)}
+          onClick={() => setCurrentPage(Number(currentPage) + 1)}
           className="w-20 text-heading3 px-2 py-1 rounded bg-accent disabled:opacity-50 disabled:cursor-not-allowed"
           disabled={currentPage === totalPages}
         >
           Next
         </button>
       </div>
-
-      {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-        {paginatedProjects?.map((project: Project, index: number) => {
-          return (
-            <ProjectCard
-              key={`project?.name-${index}`}
-              imageUrl={'https://picsum.photos/seed/picsum/300/100'}
-              title={project?.name}
-              description={project?.description}
-            />
-          )
-        })}
-      </div>
-      <div className="flex flex-row justify-end gap-2">
-        <p className="self-center justify-self-end text-paragraph">
-          Page {currentPage} of {totalPages}
-        </p>
-        <button
-          onClick={(prevPage) => setCurrentPage(+prevPage - 1)}
-          className="w-20 text-heading3 px-2 py-1 rounded bg-accent disabled:opacity-50 disabled:cursor-not-allowed"
-          disabled={currentPage === 1}
-        >
-          Previous
-        </button>
-
-        <button
-          // onClick={(prevPage) => setCurrentPage(+prevPage + 1)}
-          onClick={(prevPage) => console.log(prevPage)}
-          className="w-20 text-heading3 px-2 py-1 rounded bg-accent disabled:opacity-50 disabled:cursor-not-allowed"
-          disabled={currentPage === totalPages}
-        >
-          Next
-        </button>
-      </div> */}
-    </>
+    </div>
   )
+
+  // return (
+  //   <>
+  //     <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+  //       {paginatedProjects?.map((project: Project, index: number) => {
+  //         return (
+  //           <ProjectCard
+  //             key={`project?.name-${index}`}
+  //             imageUrl={'https://picsum.photos/seed/picsum/300/100'}
+  //             title={project?.name}
+  //             description={project?.description}
+  //           />
+  //         )
+  //       })}
+  //     </div>
+  //     <div className="flex flex-row justify-end gap-2">
+  //       <p className="self-center justify-self-end text-paragraph">
+  //         Page {currentPage} of {totalPages}
+  //       </p>
+  //       <button
+  //         onClick={(prevPage) => setCurrentPage(+prevPage - 1)}
+  //         className="w-20 text-heading3 px-2 py-1 rounded bg-accent disabled:opacity-50 disabled:cursor-not-allowed"
+  //         disabled={currentPage === 1}
+  //       >
+  //         Previous
+  //       </button>
+
+  //       <button
+  //         // onClick={(prevPage) => setCurrentPage(+prevPage + 1)}
+  //         onClick={(prevPage) => console.log(prevPage)}
+  //         className="w-20 text-heading3 px-2 py-1 rounded bg-accent disabled:opacity-50 disabled:cursor-not-allowed"
+  //         disabled={currentPage === totalPages}
+  //       >
+  //         Next
+  //       </button>
+  //     </div>
+  //   </>
+  // )
 }
