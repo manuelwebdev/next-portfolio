@@ -45,7 +45,11 @@ export default async function SocialsList({
         return (
           <Link
             key={social?.name}
-            href={social?.link}
+            href={
+              social?.name === 'Resume'
+                ? '/resume-manuel-espinoza-2024.pdf'
+                : social?.link
+            }
             target="_blank"
             className={`group bg-secondary p-3 border-transparent border-2 hover:border-background flex flex-col items-center justify-center rounded-full hover:bg-secondary transition-all duration-400 hover:duration-300 hover:scale-105 hover:shadow-xl`}
           >
