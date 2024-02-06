@@ -12,9 +12,9 @@ function SkillListByType({ skills, type }: { skills: Skill[]; type: string }) {
       {skills
         ?.filter((skill: Skill) => skill?.type === type)
         .map((skill: Skill) => (
-          <div className="flex gap-1">
+          <div key={skill?.name} className="flex gap-1">
             <Image src={skill?.icon} alt={''} width={15} height={15} />
-            <p key={skill?.name}>{skill?.name}</p>
+            <p>{skill?.name}</p>
           </div>
         ))}
     </div>
