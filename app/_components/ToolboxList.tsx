@@ -16,7 +16,7 @@ function SkillListByType({ skills, type }: { skills: Skill[]; type: string }) {
 }
 
 export default async function ToolboxList({ skills }: any) {
-  const types: string[] = [
+  const types: any[] = [
     ...new Set(skills?.map((skill: Skill) => skill?.type as string)),
   ]
   console.log({ types })
