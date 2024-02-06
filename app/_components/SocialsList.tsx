@@ -11,7 +11,7 @@ import {
 } from 'react-icons/fa6'
 
 // get socials from server
-type Social = {
+export type Social = {
   name: string
   link: string
 }
