@@ -3,23 +3,30 @@ import ocean from './../public/me_by_the_ocean.jpg'
 import me_back from './../public/me_back.webp'
 import Image from 'next/image'
 import Link from 'next/link'
-import SocialsList from './_components/SocialsList'
-import ToolboxList from './_components/ToolboxList'
+import SocialsList, { Social } from './_components/SocialsList'
+import ToolboxList, { Skill } from './_components/ToolboxList'
 import TitleWrapper from './_components/TitleWrapper'
-import ServerProjects from './_components/ServerProjects'
+import ServerProjects, { Project } from './_components/ServerProjects'
 import ContactForm from './_components/ContactForm'
 import Header from './_components/Header'
 import { getAll } from '@vercel/edge-config'
 import { NextResponse } from 'next/server'
 import { Suspense } from 'react'
 
+type ServerData = {
+  greeting: string
+  projects: Project[]
+  skills: Skill[]
+  socials: Social[]
+}
+
 async function getServerData() {
-  const data = await getAll()
-  return data
+  return await getAll<ServerData>()
 }
 
 export default async function Page() {
   const serverData = (await getServerData()) || {}
+  console.log(serverData?.skills)
   return (
     <main className="h-full grid grid-cols-1 sm:grid-cols-2 p-4 gap-4">
       <Header />
