@@ -12,9 +12,10 @@ import Header from './_components/Header'
 import { getAll } from '@vercel/edge-config'
 import { NextResponse } from 'next/server'
 import { Suspense } from 'react'
+import * as Dialog from '@radix-ui/react-dialog'
+import Modal from './_components/Modal'
 
 type ServerData = {
-  greeting: string
   projects: Project[]
   skills: Skill[]
   socials: Social[]

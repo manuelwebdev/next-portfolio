@@ -1,18 +1,13 @@
-import { NextResponse } from 'next/server'
-import { get } from '@vercel/edge-config'
-import { Suspense, useState } from 'react'
+'use client'
+import { useState } from 'react'
 import PaginatedProjects from './PaginatedProjects'
+import Modal from './Modal'
 
 export type Project = {
   name: string
   description: string
   tags: string[] | null
   link?: string
-}
-
-async function getProjects() {
-  const data = await get<Project[]>('projects')
-  return NextResponse.json(data)
 }
 
 export default async function ServerProjects({ projects }: any) {

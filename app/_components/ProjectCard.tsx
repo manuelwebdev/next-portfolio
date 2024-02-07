@@ -1,6 +1,8 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
+import Modal from './Modal'
 
 export default function ProjectCard({
   imageUrl,
@@ -12,7 +14,10 @@ export default function ProjectCard({
   description: string
 }) {
   return (
-    <div className="w-full p-2 bg-secondary rounded text-white flex flex-col gap-3">
+    <Link
+      href={''}
+      className="w-full p-2 bg-secondary rounded text-white flex flex-col gap-3"
+    >
       <Image
         src={imageUrl}
         alt={`${title}: ${description}`}
@@ -27,6 +32,18 @@ export default function ProjectCard({
         </h2>
         <p className="text-paragraph">{description}</p>
       </div>
-    </div>
+      <Modal
+        triggerText={
+          <Image
+            src={'./icons/arrow-right.svg'}
+            alt={'arrow right icon'}
+            width={20}
+            height={20}
+          />
+        }
+        title={title}
+        children={<p>{description}</p>}
+      />
+    </Link>
   )
 }
