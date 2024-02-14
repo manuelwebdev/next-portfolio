@@ -1,5 +1,6 @@
 import * as Tabs from '@radix-ui/react-tabs'
 import ocean from './../public/me_by_the_ocean.jpg'
+import vineyard from './../public/me_in_vineyard.jpg'
 import me_back from './../public/me_back.webp'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -52,8 +53,8 @@ export default async function Page() {
       </div>
       <Image
         className="w-full h-full max-h-[30rem] sm:max-h-[90dvh] object-cover object-bottom rounded-md"
-        src={ocean}
-        alt="me by the ocean"
+        src={vineyard}
+        alt="me in a vineyard"
         loading="lazy"
         placeholder="blur"
         width={400}
