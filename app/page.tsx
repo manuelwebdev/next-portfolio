@@ -1,5 +1,3 @@
-import * as Tabs from '@radix-ui/react-tabs'
-import ocean from './../public/me_by_the_ocean.jpg'
 import vineyard from './../public/me_in_vineyard.jpg'
 import me_back from './../public/me_back.webp'
 import Image from 'next/image'
@@ -11,10 +9,7 @@ import ServerProjects, { Project } from './_components/ServerProjects'
 import ContactForm from './_components/ContactForm'
 import Header from './_components/Header'
 import { getAll } from '@vercel/edge-config'
-import { NextResponse } from 'next/server'
 import { Suspense } from 'react'
-import * as Dialog from '@radix-ui/react-dialog'
-import Modal from './_components/Modal'
 
 type ServerData = {
   projects: Project[]
