@@ -14,36 +14,26 @@ export default function ProjectCard({
   description: string
 }) {
   return (
-    <Link
-      href={''}
-      className="w-full p-2 bg-secondary rounded text-white flex flex-col gap-3"
-    >
-      <Image
-        src={imageUrl}
-        alt={`${title}: ${description}`}
-        width={1000}
-        height={1000}
-        loading="lazy"
-        className="w-full object-cover rounded-sm "
-      />
-      <div className="flex flex-col gap-1">
-        <h2 className="text-heading3 md:text-heading2 font-bold leading-5">
-          {title}
-        </h2>
-        <p className="text-paragraph">{description}</p>
-      </div>
-      <Modal
-        triggerText={
+    <Modal
+      triggerText={
+        <div className="w-full p-2 bg-secondary rounded text-white flex flex-col items-start gap-3">
           <Image
-            src={'./icons/arrow-right.svg'}
-            alt={'arrow right icon'}
-            width={20}
-            height={20}
+            src={imageUrl}
+            alt={`${title}: ${description}`}
+            width={1000}
+            height={1000}
+            loading="lazy"
+            className="w-full object-cover rounded-sm "
           />
-        }
-        title={title}
-        children={<p>{description}</p>}
-      />
-    </Link>
+          <div className="flex flex-col items-start gap-1">
+            <h2 className="text-heading3 md:text-heading2 font-bold leading-5">
+              {title}
+            </h2>
+            <p className="text-paragraph">{description}</p>
+          </div>
+        </div>
+      }
+      title={title}
+    />
   )
 }
