@@ -10,17 +10,20 @@ export default function Modal({
   title,
   stack = ['react', 'next'],
   repository,
-  ...props
+  className,
 }: {
-  children: React.ReactNode
-  triggerText: React.ReactNode | null
+  children?: React.ReactNode
+  triggerText?: React.ReactNode | string | null
   title: string
   stack?: string[] | null
   repository?: string
+  className?: string
 }) {
   return (
     <Dialog.Root>
-      {triggerText && <Dialog.Trigger>{triggerText}</Dialog.Trigger>}
+      {triggerText && (
+        <Dialog.Trigger className={className}>{triggerText}</Dialog.Trigger>
+      )}
       <Dialog.Portal>
         <Dialog.Overlay className="bg-[rgba(0,0,0,0.5)] fixed top-0 left-0 right-0 bottom-0 grid justify-end items-center overflow-y-auto">
           <Dialog.Content className="min-w-[250px] w-[80dvw] h-[100dvh] bg-white rounded-l-md flex flex-col gap-6">
