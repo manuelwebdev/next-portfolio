@@ -23,7 +23,6 @@ async function getServerData() {
 
 export default async function Page() {
   const serverData = (await getServerData()) || {}
-  console.log(serverData?.skills)
   return (
     <main className="h-full grid grid-cols-1 sm:grid-cols-2 p-4 gap-4">
       <Header />
