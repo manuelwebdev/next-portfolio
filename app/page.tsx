@@ -5,17 +5,13 @@ import Link from 'next/link'
 import SocialsList, { Social } from './_components/SocialsList'
 import ToolboxList, { Skill } from './_components/ToolboxList'
 import TitleWrapper from './_components/TitleWrapper'
-import ServerProjects, { Project } from './_components/ServerProjects'
+import Projects, { Project } from './_components/projects/Projects'
 import ContactForm from './_components/ContactForm'
 import Header from './_components/Header'
 import { getAll } from '@vercel/edge-config'
 import { Suspense } from 'react'
-import PaginatedProjects from './_components/PaginatedProjects'
-// import { createClient } from './utils/supabase/server'
-// import { cookies } from 'next/headers'
 
 type ServerData = {
-  projects: Project[]
   skills: Skill[]
   socials: Social[]
 }
@@ -58,10 +54,8 @@ export default async function Page() {
         height={600}
       />
       <TitleWrapper title="Projects" id="projects">
-        <Suspense fallback={<div>Loading...</div>}>
-          <ServerProjects />
-          {/* <PaginatedProjects projects={serverData?.projects ?? []} /> */}
-        </Suspense>
+        <Projects />
+        {/* <PaginatedProjects projects={serverData?.projects ?? []} /> */}
       </TitleWrapper>
       <TitleWrapper title="Toolbox" id="toolbox">
         <ToolboxList skills={serverData?.skills} />
@@ -130,7 +124,7 @@ export default async function Page() {
           loading="lazy"
         ></iframe>
       </TitleWrapper>
-      <div
+      <footer
         id="footer"
         className="col-span-1 sm:col-span-2 flex flex-col items-center gap-3 py-3"
       >
@@ -138,7 +132,7 @@ export default async function Page() {
         <div className="socialList flex gap-4">
           <SocialsList socials={serverData?.socials ?? []} />
         </div>
-      </div>
+      </footer>
     </main>
   )
 }

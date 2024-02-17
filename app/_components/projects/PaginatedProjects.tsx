@@ -1,8 +1,9 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { Project } from './ServerProjects'
-import ProjectCard from './ProjectCard'
+import { Project } from './Projects'
+import Card from './Card'
+import Pagination from './Pagination'
 
 export function paginate(
   array: any[],
@@ -30,7 +31,7 @@ export default function PaginatedProjects({
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
         {paginatedProjects?.map((project: Project, index: number) => {
           return (
-            <ProjectCard
+            <Card
               key={`project?.name-${index}`}
               imageUrl={project?.featured_image}
               project={project}
@@ -38,7 +39,12 @@ export default function PaginatedProjects({
           )
         })}
       </div>
-      <div className="flex flex-row justify-end gap-2">
+      <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
+      {/* <div className="flex flex-row justify-end gap-2">
         <p className="self-center justify-self-end text-paragraph">
           Page {currentPage} of {totalPages}
         </p>
@@ -57,7 +63,7 @@ export default function PaginatedProjects({
         >
           Next
         </button>
-      </div>
+      </div> */}
     </>
   )
 }

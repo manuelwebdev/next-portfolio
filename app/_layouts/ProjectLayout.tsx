@@ -1,7 +1,7 @@
 import { Dialog } from '@radix-ui/react-dialog'
 import Link from 'next/link'
 import React from 'react'
-import { Project } from '../_components/ServerProjects'
+import { Project } from '../_components/projects/Projects'
 
 export default function ProjectLayout({
   children,
@@ -10,10 +10,10 @@ export default function ProjectLayout({
   children: React.ReactNode
   project: Project
 }) {
-  const { tags = [], link = '' } = project
+  // const { tags = [], link = '' } = project
   return (
     <div className="flex flex-col gap-2">
-      <div className="flex items-center gap-2">
+      {/* <div className="flex items-center gap-2">
         <h3 className="text-heading3">Stack:</h3>
         <div className="flex gap-1">
           {tags?.map((item: string) => (
@@ -33,7 +33,7 @@ export default function ProjectLayout({
             View
           </Link>
         </div>
-      )}
+      )} */}
     </div>
   )
 }

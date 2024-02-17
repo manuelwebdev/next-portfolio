@@ -2,11 +2,11 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import Modal from './Modal'
-import ProjectLayout from '../_layouts/ProjectLayout'
-import { Project } from './ServerProjects'
+import Modal from '../Modal'
+import ProjectLayout from '../../_layouts/ProjectLayout'
+import { Project } from './Projects'
 
-export default function ProjectCard({
+export default function Card({
   imageUrl,
   project,
 }: {
@@ -406,7 +406,7 @@ export default function ProjectCard({
             width={1000}
             height={1000}
             loading="lazy"
-            className="w-full object-cover rounded-sm "
+            className="w-full max-h-40 object-cover object-top rounded-sm "
           />
           <div className="flex flex-col items-start gap-1">
             <h2 className="text-heading3 md:text-heading2 font-bold leading-5">

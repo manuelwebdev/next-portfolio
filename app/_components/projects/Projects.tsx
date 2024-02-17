@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers'
 import PaginatedProjects from './PaginatedProjects'
-import { createClient } from '../utils/supabase/server'
+import { createClient } from '../../utils/supabase/server'
 
 export type Project = {
   id: string
@@ -17,16 +17,16 @@ async function getProjects() {
   const cookieStore = cookies()
   const supabase = createClient(cookieStore)
 
-  const { data: projects } = await supabase
+  const { data: projects = [] } = await supabase
     .from('projects')
     .select('*')
     .order('created_at', { ascending: false })
-    .limit(4)
+    .limit(5)
   // console.log(projects)
   return projects
 }
 
-export default async function ServerProjects() {
+export default async function Projects() {
   const projects = await getProjects()
   console.log(projects)
   return (
