@@ -32,7 +32,7 @@ export default function PaginatedProjects({
           return (
             <ProjectCard
               key={`project?.name-${index}`}
-              imageUrl={'https://picsum.photos/seed/picsum/300/100'}
+              imageUrl={project?.featured_image}
               project={project}
             />
           )
