@@ -3,7 +3,6 @@
 import { useMemo, useState } from 'react'
 import { Project } from './ServerProjects'
 import ProjectCard from './ProjectCard'
-import next from 'next'
 
 export function paginate(
   array: any[],
@@ -13,17 +12,10 @@ export function paginate(
   return array.slice((page_number - 1) * page_size, page_number * page_size)
 }
 
-type project = {
-  name: string
-  description: string
-  link: string
-  tags: string[]
-}
-
 export default function PaginatedProjects({
   projects,
 }: {
-  projects: project[]
+  projects: Project[]
 }) {
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [projectsPerPage] = useState<number>(4)
@@ -41,8 +33,7 @@ export default function PaginatedProjects({
             <ProjectCard
               key={`project?.name-${index}`}
               imageUrl={'https://picsum.photos/seed/picsum/300/100'}
-              title={project?.name}
-              description={project?.description}
+              project={project}
             />
           )
         })}
@@ -52,7 +43,7 @@ export default function PaginatedProjects({
           Page {currentPage} of {totalPages}
         </p>
         <button
-          onClick={(prevPage) => setCurrentPage(Number(currentPage) - 1)}
+          onClick={() => setCurrentPage(Number(currentPage) - 1)}
           className="w-20 text-heading3 px-2 py-1 rounded bg-accent disabled:opacity-50 disabled:cursor-not-allowed"
           disabled={currentPage === 1}
         >
@@ -60,7 +51,7 @@ export default function PaginatedProjects({
         </button>
 
         <button
-          onClick={(prevPage) => setCurrentPage(Number(currentPage) + 1)}
+          onClick={() => setCurrentPage(Number(currentPage) + 1)}
           className="w-20 text-heading3 px-2 py-1 rounded bg-accent disabled:opacity-50 disabled:cursor-not-allowed"
           disabled={currentPage === totalPages}
         >

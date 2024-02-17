@@ -10,6 +10,7 @@ import ContactForm from './_components/ContactForm'
 import Header from './_components/Header'
 import { getAll } from '@vercel/edge-config'
 import { Suspense } from 'react'
+import PaginatedProjects from './_components/PaginatedProjects'
 
 type ServerData = {
   projects: Project[]
@@ -56,7 +57,8 @@ export default async function Page() {
       />
       <TitleWrapper title="Projects" id="projects">
         <Suspense fallback={<div>Loading...</div>}>
-          <ServerProjects projects={serverData?.projects} />
+          {/* <ServerProjects projects={serverData?.projects} /> */}
+          <PaginatedProjects projects={serverData?.projects ?? []} />
         </Suspense>
       </TitleWrapper>
       <TitleWrapper title="Toolbox" id="toolbox">

@@ -1,9 +1,7 @@
-'use client'
-import { useState } from 'react'
 import PaginatedProjects from './PaginatedProjects'
-import Modal from './Modal'
 
 export type Project = {
+  id: string | number
   name: string
   description: string
   tags: string[] | null

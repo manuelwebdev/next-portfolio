@@ -3,23 +3,23 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Modal from './Modal'
+import ProjectLayout from '../_layouts/ProjectLayout'
+import { Project } from './ServerProjects'
 
 export default function ProjectCard({
   imageUrl,
-  title,
-  description,
+  project,
 }: {
   imageUrl: string
-  title: string
-  description: string
+  project: Project
 }) {
   return (
     <Modal
-      triggerText={
+      trigger={
         <div className="w-full p-2 bg-secondary rounded text-white flex flex-col items-start gap-3">
           <Image
             src={imageUrl}
-            alt={`${title}: ${description}`}
+            alt={`${project?.name}: ${project?.description}`}
             width={1000}
             height={1000}
             loading="lazy"
@@ -27,13 +27,14 @@ export default function ProjectCard({
           />
           <div className="flex flex-col items-start gap-1">
             <h2 className="text-heading3 md:text-heading2 font-bold leading-5">
-              {title}
+              {project?.name}
             </h2>
-            <p className="text-paragraph">{description}</p>
+            <p className="text-paragraph">{project?.description}</p>
           </div>
         </div>
       }
-      title={title}
+      title={project?.name}
+      children={<ProjectLayout children={undefined} project={project} />}
     />
   )
 }
