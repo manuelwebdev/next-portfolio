@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers'
 import PaginatedProjects from './PaginatedProjects'
 import { createClient } from '../../utils/supabase/server'
+import { Suspense } from 'react'
 
 export type Project = {
   id: string
@@ -10,7 +11,10 @@ export type Project = {
   repository: string
   stack: string[]
   study: any[]
-  featured_image: string
+  featured_image: {
+    url: string
+    blurUrl: string
+  }
 }
 
 async function getProjects() {
@@ -22,16 +26,16 @@ async function getProjects() {
     .select('*')
     .order('created_at', { ascending: false })
     .limit(5)
-  // console.log(projects)
   return projects
 }
 
 export default async function Projects() {
   const projects = await getProjects()
-  console.log(projects)
   return (
-    <div className="flex flex-col gap-2">
-      <PaginatedProjects projects={projects ?? []} />
+    <div className="h-full flex flex-col gap-2">
+      <Suspense fallback={<div>Loading...</div>}>
+        <PaginatedProjects projects={projects ?? []} />
+      </Suspense>
     </div>
   )
 }

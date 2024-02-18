@@ -27,13 +27,14 @@ export default function PaginatedProjects({
   )
 
   return (
-    <>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+    <div className="h-full flex flex-col justify-between gap-2">
+      <div className="h-max grid grid-cols-1 lg:grid-cols-2 gap-2">
         {paginatedProjects?.map((project: Project, index: number) => {
+          console.log(project?.featured_image)
           return (
             <Card
               key={`project?.name-${index}`}
-              imageUrl={project?.featured_image}
+              imageUrl={project?.featured_image?.url}
               project={project}
             />
           )
@@ -64,6 +65,6 @@ export default function PaginatedProjects({
           Next
         </button>
       </div> */}
-    </>
+    </div>
   )
 }
