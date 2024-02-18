@@ -23,7 +23,10 @@ async function getServerData() {
     if (typeof error === 'string') {
       throw new Error(error)
     } else {
-      throw new Error('Portfolio: An unknown error occurred', error as Error)
+      throw new Error(
+        'Portfolio:page.tsx: An unknown error occurred',
+        error as Error,
+      )
     }
   }
 }

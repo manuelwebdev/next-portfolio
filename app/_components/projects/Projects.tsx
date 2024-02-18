@@ -35,9 +35,12 @@ async function getProjects() {
     // return projects
   } catch (error) {
     if (typeof error === 'string') {
-      throw new Error('Portfolio:', error as unknown as Error)
+      throw new Error('Portfolio:projects.tsx:', error as unknown as Error)
     } else {
-      throw new Error('Portfolio: An unknown error occurred', error as Error)
+      throw new Error(
+        'Portfolio:projects.tsx: An unknown error occurred',
+        error as Error,
+      )
     }
   }
 }
