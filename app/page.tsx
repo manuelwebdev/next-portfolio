@@ -23,7 +23,7 @@ async function getServerData() {
     if (typeof error === 'string') {
       throw new Error(error)
     } else {
-      throw new Error('An unknown error occurred')
+      throw new Error('Portfolio: An unknown error occurred', error as Error)
     }
   }
 }
