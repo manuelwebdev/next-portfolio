@@ -24,14 +24,15 @@ export type Project = {
 async function getProjects() {
   try {
     const cookieStore = cookies()
-    const supabase = createClient(cookieStore)
+    console.log({ cookieStore })
+    // const supabase = createClient(cookieStore)
 
-    const { data: projects = [] } = await supabase
-      .from('projects')
-      .select('*')
-      .order('created_at', { ascending: false })
-      .limit(5)
-    return projects
+    // const { data: projects = [] } = await supabase
+    //   .from('projects')
+    //   .select('*')
+    //   .order('created_at', { ascending: false })
+    //   .limit(5)
+    // return projects
   } catch (error) {
     if (typeof error === 'string') {
       throw new Error(error)
@@ -46,7 +47,7 @@ export default async function Projects() {
   return (
     <div className="h-full flex flex-col gap-2">
       <Suspense fallback={<div>Loading...</div>}>
-        <PaginatedProjects projects={projects ?? []} />
+        {/* <PaginatedProjects projects={projects ?? []} /> */}
       </Suspense>
     </div>
   )
