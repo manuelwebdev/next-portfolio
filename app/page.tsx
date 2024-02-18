@@ -17,7 +17,15 @@ type ServerData = {
 }
 
 async function getServerData() {
-  return await getAll<ServerData>()
+  try {
+    return await getAll<ServerData>()
+  } catch (error) {
+    if (typeof error === 'string') {
+      throw new Error(error)
+    } else {
+      throw new Error('An unknown error occurred')
+    }
+  }
 }
 
 export default async function Page() {

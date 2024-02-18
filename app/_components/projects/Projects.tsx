@@ -22,15 +22,23 @@ export type Project = {
 }
 
 async function getProjects() {
-  const cookieStore = cookies()
-  const supabase = createClient(cookieStore)
+  try {
+    const cookieStore = cookies()
+    const supabase = createClient(cookieStore)
 
-  const { data: projects = [] } = await supabase
-    .from('projects')
-    .select('*')
-    .order('created_at', { ascending: false })
-    .limit(5)
-  return projects
+    const { data: projects = [] } = await supabase
+      .from('projects')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(5)
+    return projects
+  } catch (error) {
+    if (typeof error === 'string') {
+      throw new Error(error)
+    } else {
+      throw new Error('An unknown error occurred')
+    }
+  }
 }
 
 export default async function Projects() {
