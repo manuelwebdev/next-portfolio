@@ -1,11 +1,9 @@
-import { Dialog } from '@radix-ui/react-dialog'
 import Link from 'next/link'
 import Image from 'next/image'
 import React from 'react'
 import { Project, Study } from '../_components/projects/Projects'
 
 export default function ProjectLayout({ project }: { project: Project }) {
-  console.log(project)
   const { id, name, description, repository, stack, study, featured_image } =
     project
   return (

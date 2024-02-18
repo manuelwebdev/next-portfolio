@@ -1,6 +1,5 @@
 'use client'
 
-import { get } from '@vercel/edge-config'
 import Link from 'next/link'
 import { IconContext } from 'react-icons'
 import {
@@ -16,11 +15,7 @@ export type Social = {
   link: string
 }
 
-export default async function SocialsList({
-  socials,
-}: {
-  socials: Social[] | any
-}) {
+export default function SocialsList({ socials }: { socials: Social[] | any }) {
   return (
     <>
       {socials?.map((social: Social) => {
