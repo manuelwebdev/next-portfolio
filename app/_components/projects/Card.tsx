@@ -37,7 +37,8 @@ export default function Card({
         </div>
       }
       title={project?.name}
-      children={<ProjectLayout children={undefined} project={project} />}
-    />
+    >
+      <ProjectLayout project={project} />
+    </Modal>
   )
 }

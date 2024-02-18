@@ -30,7 +30,6 @@ export default function PaginatedProjects({
     <div className="h-full flex flex-col justify-between gap-2">
       <div className="h-max grid grid-cols-1 lg:grid-cols-2 gap-2">
         {paginatedProjects?.map((project: Project, index: number) => {
-          console.log(project?.featured_image)
           return (
             <Card
               key={`project?.name-${index}`}
@@ -45,26 +44,6 @@ export default function PaginatedProjects({
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
-      {/* <div className="flex flex-row justify-end gap-2">
-        <p className="self-center justify-self-end text-paragraph">
-          Page {currentPage} of {totalPages}
-        </p>
-        <button
-          onClick={() => setCurrentPage(Number(currentPage) - 1)}
-          className="w-20 text-heading3 px-2 py-1 rounded bg-accent disabled:opacity-50 disabled:cursor-not-allowed"
-          disabled={currentPage === 1}
-        >
-          Previous
-        </button>
-
-        <button
-          onClick={() => setCurrentPage(Number(currentPage) + 1)}
-          className="w-20 text-heading3 px-2 py-1 rounded bg-accent disabled:opacity-50 disabled:cursor-not-allowed"
-          disabled={currentPage === totalPages}
-        >
-          Next
-        </button>
-      </div> */}
     </div>
   )
 }

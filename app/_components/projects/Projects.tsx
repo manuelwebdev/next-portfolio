@@ -3,6 +3,10 @@ import PaginatedProjects from './PaginatedProjects'
 import { createClient } from '../../utils/supabase/server'
 import { Suspense } from 'react'
 
+export type Study = {
+  text: string
+  type: 'image' | 'text'
+}
 export type Project = {
   id: string
   created_at: string
@@ -10,7 +14,7 @@ export type Project = {
   description: string
   repository: string
   stack: string[]
-  study: any[]
+  study: Study[]
   featured_image: {
     url: string
     blurUrl: string
