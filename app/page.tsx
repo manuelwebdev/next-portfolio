@@ -49,7 +49,7 @@ export default async function Page() {
           View My Work
         </Link>
         <div className="socialList flex gap-4">
-          <SocialsList socials={serverData?.socials} />
+          {/* <SocialsList socials={serverData?.socials} /> */}
         </div>
       </div>
       <Image
@@ -138,7 +138,7 @@ export default async function Page() {
       >
         <p className="text-heading3 text-white">{`© Copyright ${new Date().getFullYear()} - Manuel Espinoza`}</p>
         <div className="socialList flex gap-4">
-          <SocialsList socials={serverData?.socials ?? []} />
+          {/* <SocialsList socials={serverData?.socials ?? []} /> */}
         </div>
       </footer>
     </main>

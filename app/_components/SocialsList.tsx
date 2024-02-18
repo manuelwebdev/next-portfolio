@@ -9,7 +9,6 @@ import {
   FaEnvelope,
 } from 'react-icons/fa6'
 
-// get socials from server
 export type Social = {
   name: string
   link: string
