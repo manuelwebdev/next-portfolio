@@ -24,8 +24,8 @@ export type Project = {
 async function getProjects() {
   try {
     const cookieStore = cookies()
-    console.log({ cookieStore })
-    // const supabase = createClient(cookieStore)
+    const supabase = createClient(cookieStore)
+    console.log({ supabase })
 
     // const { data: projects = [] } = await supabase
     //   .from('projects')
