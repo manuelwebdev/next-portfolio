@@ -23,7 +23,7 @@ export default function PaginatedProjects({
   const totalPages = Math.ceil(projects?.length / projectsPerPage)
   const paginatedProjects = useMemo(
     () => paginate(projects, projectsPerPage, currentPage),
-    [currentPage],
+    [currentPage, projects],
   )
 
   return (
