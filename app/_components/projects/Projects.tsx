@@ -25,14 +25,13 @@ async function getProjects() {
   try {
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
-    console.log({ supabase })
 
-    // const { data: projects = [] } = await supabase
-    //   .from('projects')
-    //   .select('*')
-    //   .order('created_at', { ascending: false })
-    //   .limit(5)
-    // return projects
+    const { data: projects = [] } = await supabase
+      .from('projects')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(5)
+    return projects
   } catch (error) {
     if (typeof error === 'string') {
       throw new Error('Portfolio:projects.tsx:', error as unknown as Error)
@@ -50,7 +49,7 @@ export default async function Projects() {
   return (
     <div className="h-full flex flex-col gap-2">
       <Suspense fallback={<div>Loading...</div>}>
-        {/* <PaginatedProjects projects={projects ?? []} /> */}
+        <PaginatedProjects projects={projects ?? []} />
       </Suspense>
     </div>
   )
