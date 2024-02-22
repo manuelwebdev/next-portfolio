@@ -9,7 +9,6 @@ import Projects, { Project } from './_components/projects/Projects'
 import ContactForm from './_components/ContactForm'
 import Header from './_components/Header'
 import { getAll } from '@vercel/edge-config'
-import { Suspense } from 'react'
 
 type ServerData = {
   skills: Skill[]

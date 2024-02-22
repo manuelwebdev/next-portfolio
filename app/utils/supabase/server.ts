@@ -8,7 +8,7 @@ export const createClient = (cookieStore: ReturnType<typeof cookies>) => {
     {
       cookies: {
         get(name: string) {
-          return cookieStore.get(name)?.value
+          return cookieStore.get(name)?.value || '' // Providing a default empty string
         },
         set(name: string, value: string, options: CookieOptions) {
           try {
