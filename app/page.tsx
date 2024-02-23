@@ -9,6 +9,7 @@ import Projects, { Project } from './_components/projects/Projects'
 import ContactForm from './_components/ContactForm'
 import Header from './_components/Header'
 import { getAll } from '@vercel/edge-config'
+import Playlists from './_layouts/Playlists'
 
 type ServerData = {
   skills: Skill[]
@@ -125,13 +126,7 @@ export default async function Page() {
         <ContactForm />
       </TitleWrapper>
       <TitleWrapper title="Playlist" id="playlist">
-        <iframe
-          src="https://open.spotify.com/embed/playlist/3hlmdEryvkBpiyp0oSC3tA?utm_source=generator"
-          width="100%"
-          height="352"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-        ></iframe>
+        <Playlists />
       </TitleWrapper>
       <footer
         id="footer"

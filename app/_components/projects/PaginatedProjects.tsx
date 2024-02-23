@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react'
 import { Project } from './Projects'
 import Card from './Card'
 import Pagination from './Pagination'
+import React from 'react'
 
 export function paginate(
   array: any[],
