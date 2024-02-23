@@ -10,19 +10,19 @@ export default function Playlists() {
         aria-label="Manage your account"
       >
         <Tabs.Trigger
-          className="flex h-[45px] flex-1 cursor-default select-none items-center justify-center bg-foreground px-5 text-[15px] leading-none text-black outline-none transition-all duration-300 first:rounded-tl-md last:rounded-tr-md hover:cursor-pointer hover:bg-secondary hover:text-foreground hover:duration-200 data-[state=active]:border-b-2 data-[state=active]:border-b-secondary data-[state=active]:text-secondary data-[state=active]:hover:text-foreground data-[state=active]:focus:relative"
+          className="flex h-[45px] flex-1 cursor-default select-none items-center justify-center bg-foreground px-5 text-[15px] leading-none text-black outline-none transition-all duration-300 first:rounded-tl-md last:rounded-tr-md hover:cursor-pointer hover:border-b-4 hover:border-b-secondary hover:duration-200 data-[state=active]:border-b-2 data-[state=active]:border-b-secondary data-[state=active]:text-secondary data-[state=active]:focus:relative"
           value="tab1"
         >
           Daily Jam
         </Tabs.Trigger>
         <Tabs.Trigger
-          className="flex h-[45px] flex-1 cursor-default select-none items-center justify-center bg-foreground px-5 text-[15px] leading-none text-black outline-none transition-all duration-300 first:rounded-tl-md last:rounded-tr-md hover:cursor-pointer hover:bg-secondary hover:text-foreground hover:duration-200 data-[state=active]:border-b-2 data-[state=active]:border-b-secondary data-[state=active]:text-secondary data-[state=active]:hover:text-foreground data-[state=active]:focus:relative"
+          className="flex h-[45px] flex-1 cursor-default select-none items-center justify-center bg-foreground px-5 text-[15px] leading-none text-black outline-none transition-all duration-300 first:rounded-tl-md last:rounded-tr-md hover:cursor-pointer hover:border-b-4 hover:border-b-secondary hover:duration-200 data-[state=active]:border-b-2 data-[state=active]:border-b-secondary data-[state=active]:text-secondary data-[state=active]:focus:relative"
           value="tab2"
         >
           Instrumental Jam
         </Tabs.Trigger>
         <Tabs.Trigger
-          className="flex h-[45px] flex-1 cursor-default select-none items-center justify-center bg-foreground px-5 text-[15px] leading-none text-black outline-none transition-all duration-300 first:rounded-tl-md last:rounded-tr-md hover:cursor-pointer hover:bg-secondary hover:text-foreground hover:duration-200 data-[state=active]:border-b-2 data-[state=active]:border-b-secondary data-[state=active]:text-secondary data-[state=active]:hover:text-foreground data-[state=active]:focus:relative"
+          className="flex h-[45px] flex-1 cursor-default select-none items-center justify-center bg-foreground px-5 text-[15px] leading-none text-black outline-none transition-all duration-300 first:rounded-tl-md last:rounded-tr-md hover:cursor-pointer hover:border-b-4 hover:border-b-secondary hover:duration-200 data-[state=active]:border-b-2 data-[state=active]:border-b-secondary data-[state=active]:text-secondary data-[state=active]:focus:relative"
           value="tab3"
         >
           Study Jam
