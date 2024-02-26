@@ -11,7 +11,7 @@ export function paginate(
   page_size: number = 1,
   page_number: number = 1,
 ) {
-  return array.slice((page_number - 1) * page_size, page_number * page_size)
+  return array?.slice((page_number - 1) * page_size, page_number * page_size)
 }
 
 export default function PaginatedProjects({
@@ -28,8 +28,8 @@ export default function PaginatedProjects({
   )
 
   return (
-    <div className="h-full flex flex-col justify-between gap-2">
-      <div className="h-max grid grid-cols-1 lg:grid-cols-2 gap-2">
+    <div className="flex h-full flex-col justify-between gap-2">
+      <div className="grid h-max grid-cols-1 gap-2 lg:grid-cols-2">
         {paginatedProjects?.map((project: Project, index: number) => {
           return (
             <Card
