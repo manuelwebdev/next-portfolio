@@ -8,7 +8,7 @@ export default async function Header() {
     <div className="col-span-1 sm:col-span-2 rounded-lg grid grid-cols-[1fr_8rem] gap-4">
       <div className="flex items-center gap-2 bg-foreground py-1 px-3 sm:px-6 rounded-lg">
         <Image src={logo} alt={'logo'} />
-        <h1 className="text-heading2 font-bold leading-6 hidden sm:block">
+        <h1 className="text-md sm:text-heading2 font-bold leading-6">
           Manuel Espinoza
         </h1>
       </div>

@@ -1,32 +1,38 @@
-import * as Tabs from '@radix-ui/react-tabs'
-import ocean from './../public/me_by_the_ocean.jpg'
+import vineyard from './../public/me_in_vineyard.jpg'
 import me_back from './../public/me_back.webp'
 import Image from 'next/image'
 import Link from 'next/link'
 import SocialsList, { Social } from './_components/SocialsList'
 import ToolboxList, { Skill } from './_components/ToolboxList'
 import TitleWrapper from './_components/TitleWrapper'
-import ServerProjects, { Project } from './_components/ServerProjects'
+import Projects, { Project } from './_components/projects/Projects'
 import ContactForm from './_components/ContactForm'
 import Header from './_components/Header'
 import { getAll } from '@vercel/edge-config'
-import { NextResponse } from 'next/server'
-import { Suspense } from 'react'
+import Playlists from './_layouts/Playlists'
 
 type ServerData = {
-  greeting: string
-  projects: Project[]
   skills: Skill[]
   socials: Social[]
 }
 
 async function getServerData() {
-  return await getAll<ServerData>()
+  try {
+    return await getAll<ServerData>()
+  } catch (error) {
+    if (typeof error === 'string') {
+      throw new Error(error)
+    } else {
+      throw new Error(
+        'Portfolio:page.tsx: An unknown error occurred',
+        error as Error,
+      )
+    }
+  }
 }
 
 export default async function Page() {
   const serverData = (await getServerData()) || {}
-  console.log(serverData?.skills)
   return (
     <main className="h-full grid grid-cols-1 sm:grid-cols-2 p-4 gap-4">
       <Header />
@@ -51,17 +57,15 @@ export default async function Page() {
       </div>
       <Image
         className="w-full h-full max-h-[30rem] sm:max-h-[90dvh] object-cover object-bottom rounded-md"
-        src={ocean}
-        alt="me by the ocean"
+        src={vineyard}
+        alt="me in a vineyard"
         loading="lazy"
         placeholder="blur"
         width={400}
         height={600}
       />
       <TitleWrapper title="Projects" id="projects">
-        <Suspense fallback={<div>Loading...</div>}>
-          <ServerProjects projects={serverData?.projects} />
-        </Suspense>
+        <Projects />
       </TitleWrapper>
       <TitleWrapper title="Toolbox" id="toolbox">
         <ToolboxList skills={serverData?.skills} />
@@ -122,15 +126,9 @@ export default async function Page() {
         <ContactForm />
       </TitleWrapper>
       <TitleWrapper title="Playlist" id="playlist">
-        <iframe
-          src="https://open.spotify.com/embed/playlist/3hlmdEryvkBpiyp0oSC3tA?utm_source=generator"
-          width="100%"
-          height="352"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-        ></iframe>
+        <Playlists />
       </TitleWrapper>
-      <div
+      <footer
         id="footer"
         className="col-span-1 sm:col-span-2 flex flex-col items-center gap-3 py-3"
       >
@@ -138,7 +136,7 @@ export default async function Page() {
         <div className="socialList flex gap-4">
           <SocialsList socials={serverData?.socials ?? []} />
         </div>
-      </div>
+      </footer>
     </main>
   )
 }
