@@ -6,30 +6,35 @@ export default function ContactForm() {
           type="text"
           name="first name"
           placeholder="First Name"
-          className="w-full border border-primary border-solid p-1 rounded"
+          className="w-full rounded border border-solid border-primary p-1 disabled:cursor-not-allowed"
+          disabled
         />
         <input
           type="text"
           name="last name"
           placeholder="Last Name"
-          className="w-full border border-primary border-solid p-1 rounded"
+          className="w-full rounded border border-solid border-primary p-1 disabled:cursor-not-allowed"
+          disabled
         />
         <input
           type="text"
           name="email"
           placeholder="Email"
-          className="w-full border border-primary border-solid p-1 rounded"
+          className="w-full rounded border border-solid border-primary p-1 disabled:cursor-not-allowed"
+          disabled
         />
         <textarea
           name="message"
           placeholder="Message"
-          className="w-full border border-primary border-solid p-1 rounded"
+          className="w-full rounded border border-solid border-primary p-1 disabled:cursor-not-allowed"
+          disabled
         />
 
         <input
           type="submit"
           value="Submit"
-          className="cursor-pointer w-fit self-end bg-primary text-white border border-primary border-solid py-1 px-8 rounded"
+          className="w-fit cursor-pointer self-end rounded border border-solid border-primary bg-primary px-8 py-1 text-white disabled:cursor-not-allowed disabled:opacity-30"
+          disabled
         />
       </form>
     </div>

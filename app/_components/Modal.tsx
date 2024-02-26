@@ -20,9 +20,9 @@ export default function Modal({
       )}
       <Dialog.Portal>
         {/* animate the content when modal is open */}
-        <Dialog.Overlay className="bg-[rgba(0,0,0,0.5)] fixed top-0 left-0 right-0 bottom-0 grid justify-end items-center">
-          <Dialog.Content className="DialogContent min-w-[250px] w-[80dvw] h-[100dvh] bg-white rounded-l-md grid grid-rows-[min-content_auto] duration-300 overflow-y-auto">
-            <Dialog.Close className="w-fit transition-all hover:transition-all duration-400 hover:duration-200 bg-[rgb(241,245,249,0.5)] hover:bg-slate-200 rounded-full p-3 m-2 sticky top-3 bg-white border-2 border-solid border-secondary">
+        <Dialog.Overlay className="fixed bottom-0 left-0 right-0 top-0 grid items-center justify-end bg-[rgba(0,0,0,0.5)]">
+          <Dialog.Content className="DialogContent grid h-[100dvh] w-[90vw] min-w-[250px] grid-rows-[min-content_auto] overflow-y-auto rounded-l-md bg-white pb-20 duration-300 md:w-[80dvw]">
+            <Dialog.Close className="duration-400 sticky top-3 m-2 w-fit justify-self-end rounded-full border-2 border-solid border-secondary bg-[rgb(241,245,249,0.5)] bg-white p-3 transition-all hover:bg-slate-200 hover:transition-all hover:duration-200">
               <Image
                 src={'./icons/x.svg'}
                 alt={`close icon`}
@@ -31,7 +31,7 @@ export default function Modal({
                 height={15}
               />
             </Dialog.Close>
-            <div className="w-full h-full px-2 md:px-8">
+            <div className="h-full w-full px-2 md:px-8">
               <Dialog.Title className="text-heading1">{title}</Dialog.Title>
               <div className="overflow-y-auto">{children}</div>
             </div>
