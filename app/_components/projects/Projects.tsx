@@ -26,6 +26,13 @@ async function getProjects() {
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
 
+    // access supabase storage bucket named portfolio-assets. List all files in bucket
+    // todo create supabase storage policy for portfolio-assets
+    // const { data: files } = await supabase.storage
+    //   .from('portfolio-assets')
+    //   .list('public')
+    // console.log(files)
+
     const { data: projects = [] } = await supabase
       .from('projects')
       .select('*')
@@ -47,7 +54,7 @@ async function getProjects() {
 export default async function Projects() {
   const projects = await getProjects()
   return (
-    <div className="h-full flex flex-col gap-2">
+    <div className="flex h-full flex-col gap-2">
       <Suspense fallback={<div>Loading...</div>}>
         <PaginatedProjects projects={projects ?? []} />
       </Suspense>
