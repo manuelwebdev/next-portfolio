@@ -10,6 +10,7 @@ import ContactForm from './_components/ContactForm'
 import Header from './_components/Header'
 import { getAll } from '@vercel/edge-config'
 import Playlists from './_layouts/Playlists'
+import Footer from './_components/Footer'
 
 type ServerData = {
   skills: Skill[]
@@ -34,29 +35,29 @@ async function getServerData() {
 export default async function Page() {
   const serverData = (await getServerData()) || {}
   return (
-    <main className="h-full grid grid-cols-1 sm:grid-cols-2 p-4 gap-4">
+    <main className="grid h-full grid-cols-1 gap-4 p-4 sm:grid-cols-2">
       <Header />
-      <div className="flex flex-col justify-center gap-5 w-full sm:max-h-[90dvh] bg-foreground rounded-lg px-5 py-9">
+      <div className="flex w-full flex-col justify-center gap-5 rounded-lg bg-foreground px-5 py-9 sm:max-h-[90dvh]">
         <h2 className="text-heading1 font-bold leading-[3rem]">
           Hello,
           <br /> I&lsquo;m Manuel
         </h2>
-        <p className="max-w-[450px] text-heading2 font-regular leading-[1.813rem]">
-          A web developer. Since 2017 I&apos;ve been on a journey to create
+        <p className="font-regular max-w-[450px] text-heading2 leading-[1.813rem]">
+          A web developer since 2017. I&apos;ve been on a journey to create
           amazing digital experiences for people. Currently based in Lehi, Utah.
         </p>
-        <Link
+        {/* <Link
           href={'#projects'}
-          className="text-heading3 bg-primary py-2 px-4 w-fit text-white rounded"
+          className="w-fit rounded bg-primary px-4 py-2 text-heading3 text-white"
         >
           View My Work
-        </Link>
+        </Link> */}
         <div className="socialList flex gap-4">
           <SocialsList socials={serverData?.socials} />
         </div>
       </div>
       <Image
-        className="w-full h-full max-h-[30rem] sm:max-h-[90dvh] object-cover object-bottom rounded-md"
+        className="h-full max-h-[30rem] w-full rounded-md object-cover object-bottom sm:max-h-[90dvh]"
         src={vineyard}
         alt="me in a vineyard"
         loading="lazy"
@@ -64,16 +65,16 @@ export default async function Page() {
         width={400}
         height={600}
       />
-      <TitleWrapper title="Projects" id="projects">
+      {/* <TitleWrapper title="Projects" id="projects">
         <Projects />
-      </TitleWrapper>
+      </TitleWrapper> */}
       <TitleWrapper title="Toolbox" id="toolbox">
         <ToolboxList skills={serverData?.skills} />
       </TitleWrapper>
       <TitleWrapper title="About" id="about">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
           <Image
-            className="w-full h-full max-h-[300px] md:max-h-full object-cover rounded-md"
+            className="h-full max-h-[300px] w-full rounded-md object-cover md:max-h-full"
             src={me_back}
             alt="back of me while I take a photo"
             loading="lazy"
@@ -109,34 +110,26 @@ export default async function Page() {
         </div>
       </TitleWrapper>
       <TitleWrapper id="testimonial">
-        <div className="h-full flex flex-col justify-center items-center gap-2">
-          <div className="w-14 h-14 bg-primary rounded-full"></div>
+        <div className="flex h-full flex-col items-center justify-center gap-2">
+          <div className="h-14 w-14 rounded-full bg-primary"></div>
           <p className="w-full px-6 text-heading3 md:text-heading2">
             &lsquo;&lsquo;His title was Junior Web Developer but his talent,
             empathy for the customer, and continued growth while at Lion
             demonstrate his value to any team he finds himself on. I hope to
             work with Manuel again.&lsquo;&lsquo;
           </p>
-          <p className="w-full text-heading3 md:text-heading2 text-right">
+          <p className="w-full text-right text-heading3 md:text-heading2">
             - Jeremy Barger
           </p>
         </div>
       </TitleWrapper>
-      <TitleWrapper title="Contact" id="contact">
+      {/* <TitleWrapper title="Contact (Coming Soon...)" id="contact">
         <ContactForm />
-      </TitleWrapper>
+      </TitleWrapper> */}
       <TitleWrapper title="Playlist" id="playlist">
         <Playlists />
       </TitleWrapper>
-      <footer
-        id="footer"
-        className="col-span-1 sm:col-span-2 flex flex-col items-center gap-3 py-3"
-      >
-        <p className="text-heading3 text-white">{`© Copyright ${new Date().getFullYear()} - Manuel Espinoza`}</p>
-        <div className="socialList flex gap-4">
-          <SocialsList socials={serverData?.socials ?? []} />
-        </div>
-      </footer>
+      <Footer serverData={serverData} />
     </main>
   )
 }
