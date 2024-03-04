@@ -28,16 +28,17 @@ async function getProjects() {
 
     // access supabase storage bucket named portfolio-assets. List all files in bucket
     // todo create supabase storage policy for portfolio-assets
-    // const { data: files } = await supabase.storage
-    //   .from('portfolio-assets')
-    //   .list('public')
-    // console.log(files)
-
+    // console.log({ supabase })
+    const { data, error } = await supabase.storage
+      .from('portfolio-assets')
+      .list()
+    console.log({ data, error })
     const { data: projects = [] } = await supabase
       .from('projects')
       .select('*')
       .order('created_at', { ascending: false })
       .limit(5)
+    // console.log({ projects })
     return projects
   } catch (error) {
     if (typeof error === 'string') {

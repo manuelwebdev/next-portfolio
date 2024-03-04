@@ -65,9 +65,9 @@ export default async function Page() {
         width={400}
         height={600}
       />
-      {/* <TitleWrapper title="Projects" id="projects">
+      <TitleWrapper title="Projects" id="projects">
         <Projects />
-      </TitleWrapper> */}
+      </TitleWrapper>
       <TitleWrapper title="Toolbox" id="toolbox">
         <ToolboxList skills={serverData?.skills} />
       </TitleWrapper>
