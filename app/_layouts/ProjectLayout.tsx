@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Project, Study } from '../_components/projects/Projects'
 
 export default function ProjectLayout({ project }: { project: Project }) {
@@ -13,7 +13,7 @@ export default function ProjectLayout({ project }: { project: Project }) {
         <h3 className="text-heading3">Stack:</h3>
         <div className="flex gap-1">
           {stack?.map((item: string, index: number) => (
-            <p key={item} className="px-2 bg-accent rounded-full">
+            <p key={item} className="rounded-full bg-accent px-2">
               {item}
             </p>
           ))}
@@ -24,32 +24,32 @@ export default function ProjectLayout({ project }: { project: Project }) {
           <h3 className="text-heading3">Respository:</h3>
           <Link
             href={repository}
-            className="bg-transparent hover:bg-primary duration-200 border-2 border-primary border-solid rounded-full px-3 text-primary hover:text-white"
+            className="rounded-full border-2 border-solid border-primary bg-transparent px-3 text-primary duration-200 hover:bg-primary hover:text-white"
           >
             View
           </Link>
         </div>
       )}
-      <div className="mt-5 flex flex-col gap-3 h-auto max-h- overflow-y-auto">
+      <div className="max-h- mt-5 flex h-auto flex-col gap-3 overflow-y-auto">
         {study &&
           study?.map((item: Study) => {
             return (
-              <>
+              <Suspense key={item?.text} fallback={<div>Loading...</div>}>
                 {item?.type === 'image' ? (
                   <Image
-                    src={item?.text}
+                    src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object${item?.text}`}
                     alt={`${project?.name}: ${project?.description}`}
-                    placeholder="blur"
-                    blurDataURL={project?.featured_image?.blurUrl}
+                    // placeholder="blur"
+                    // blurDataURL={project?.featured_image?.blurUrl}
                     loading="lazy"
                     width={400}
                     height={400}
-                    className="w-full max-w-[40rem] max-h-[40rem] object-contain object-top rounded-md"
+                    className="max-h-[40rem] w-full max-w-[40rem] rounded-md object-contain object-top"
                   />
                 ) : (
                   <p className="text-paragraph">{item?.text}</p>
                 )}
-              </>
+              </Suspense>
             )
           })}
       </div>

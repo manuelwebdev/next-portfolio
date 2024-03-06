@@ -14,10 +14,7 @@ export default function Card({
   imageUrl: string
   project: Project
 }) {
-  // console.log(
-  //   { imageUrl, project },
-  //   `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object${imageUrl}`,
-  // )
+  console.log(imageUrl, project)
   return (
     <Modal
       trigger={
