@@ -1,11 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
 import Modal from '../Modal'
 import ProjectLayout from '../../_layouts/ProjectLayout'
 import { Project } from './Projects'
-import { Suspense } from 'react'
 
 export default function Card({
   imageUrl,
@@ -14,7 +12,6 @@ export default function Card({
   imageUrl: string
   project: Project
 }) {
-  console.log(imageUrl, project)
   return (
     <Modal
       trigger={

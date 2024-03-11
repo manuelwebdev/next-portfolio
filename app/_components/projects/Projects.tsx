@@ -4,8 +4,8 @@ import { createClient } from '../../utils/supabase/server'
 import { Suspense } from 'react'
 
 export type Study = {
+  images: any[]
   text: string
-  type: 'image' | 'text'
 }
 export type Project = {
   id: string
@@ -14,7 +14,7 @@ export type Project = {
   description: string
   repository: string
   stack: string[]
-  study: Study[]
+  study: Study
   featured_image: {
     url: string
     blurUrl: string
@@ -25,20 +25,11 @@ async function getProjects() {
   try {
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
-
-    // access supabase storage bucket named portfolio-assets. List all files in bucket
-    // todo create supabase storage policy for portfolio-assets
-    // console.log({ supabase })
-    const { data } = await supabase.storage
-      .from('portfolio-assets')
-      .getPublicUrl('desktop.png')
-    console.log({ data })
     const { data: projects = [] } = await supabase
       .from('projects')
       .select('*')
       .order('created_at', { ascending: false })
       .limit(5)
-    // console.log({ projects })
     return projects
   } catch (error) {
     if (typeof error === 'string') {
