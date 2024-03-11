@@ -46,12 +46,12 @@ export default async function Page() {
           A web developer since 2017. I&apos;ve been on a journey to create
           amazing digital experiences for people. Currently based in Lehi, Utah.
         </p>
-        {/* <Link
+        <Link
           href={'#projects'}
           className="w-fit rounded bg-primary px-4 py-2 text-heading3 text-white"
         >
           View My Work
-        </Link> */}
+        </Link>
         <div className="socialList flex gap-4">
           <SocialsList socials={serverData?.socials} />
         </div>
