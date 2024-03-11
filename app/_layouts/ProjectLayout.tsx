@@ -1,11 +1,23 @@
+'use client'
 import Link from 'next/link'
-import Image from 'next/image'
-import React from 'react'
-import { Project, Study } from '../_components/projects/Projects'
+import { useState } from 'react'
+import { Project } from '../_components/projects/Projects'
+import Lightbox from 'yet-another-react-lightbox'
+import 'yet-another-react-lightbox/styles.css'
+import Inline from 'yet-another-react-lightbox/plugins/inline'
+import 'yet-another-react-lightbox/plugins/thumbnails.css'
+import Zoom from 'yet-another-react-lightbox/plugins/zoom'
 
 export default function ProjectLayout({ project }: { project: Project }) {
-  const { id, name, description, repository, stack, study, featured_image } =
-    project
+  const [open, setOpen] = useState(true)
+  const [index, setIndex] = useState(0)
+  const { description, repository, stack, study } = project
+  const updateIndex = ({ index: current }: { index: number }) =>
+    setIndex(current)
+  const carouselImages = study?.images?.map((img: any) => ({
+    ...img,
+    src: `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object${img?.src}`,
+  }))
   return (
     <div className="flex flex-col gap-2">
       <h2 className="mb-6 text-heading3 font-thin">{description}</h2>
@@ -13,7 +25,7 @@ export default function ProjectLayout({ project }: { project: Project }) {
         <h3 className="text-heading3">Stack:</h3>
         <div className="flex gap-1">
           {stack?.map((item: string, index: number) => (
-            <p key={item} className="px-2 bg-accent rounded-full">
+            <p key={item} className="rounded-full bg-accent px-2">
               {item}
             </p>
           ))}
@@ -21,37 +33,27 @@ export default function ProjectLayout({ project }: { project: Project }) {
       </div>
       {repository && (
         <div className="flex items-center gap-2">
-          <h3 className="text-heading3">Respository:</h3>
+          <h3 className="text-heading3">Project:</h3>
           <Link
             href={repository}
-            className="bg-transparent hover:bg-primary duration-200 border-2 border-primary border-solid rounded-full px-3 text-primary hover:text-white"
+            className="rounded-full border-2 border-solid border-primary bg-transparent px-3 text-primary duration-200 hover:bg-primary hover:text-white"
           >
             View
           </Link>
         </div>
       )}
-      <div className="mt-5 flex flex-col gap-3 h-auto max-h- overflow-y-auto">
-        {study &&
-          study?.map((item: Study) => {
-            return (
-              <>
-                {item?.type === 'image' ? (
-                  <Image
-                    src={item?.text}
-                    alt={`${project?.name}: ${project?.description}`}
-                    placeholder="blur"
-                    blurDataURL={project?.featured_image?.blurUrl}
-                    loading="lazy"
-                    width={400}
-                    height={400}
-                    className="w-full max-w-[40rem] max-h-[40rem] object-contain object-top rounded-md"
-                  />
-                ) : (
-                  <p className="text-paragraph">{item?.text}</p>
-                )}
-              </>
-            )
-          })}
+      <div className="mt-5 flex h-auto w-full flex-col gap-3 overflow-y-auto">
+        <Lightbox
+          index={index}
+          open={open}
+          close={() => setOpen(false)}
+          slides={carouselImages}
+          on={{ view: updateIndex }}
+          plugins={[Inline, Zoom]}
+          className="aspect-[3/2] w-full max-w-[85dvw] md:max-w-full"
+          carousel={{ imageFit: 'contain' }}
+        />
+        <p>{study?.text}</p>
       </div>
     </div>
   )
