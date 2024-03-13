@@ -123,9 +123,9 @@ export default async function Page() {
           </p>
         </div>
       </TitleWrapper>
-      {/* <TitleWrapper title="Contact (Coming Soon...)" id="contact">
+      <TitleWrapper title="Contact (Coming Soon...)" id="contact">
         <ContactForm />
-      </TitleWrapper> */}
+      </TitleWrapper>
       <TitleWrapper title="Playlist" id="playlist">
         <Playlists />
       </TitleWrapper>
